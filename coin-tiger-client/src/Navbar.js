@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { NavLink } from "react-router-dom";
+// import CoinTable from "./CoinTable";
 // import { NavLink } from 'react-router-dom';
 
 // import { createMuiTheme } from '@material-ui/core/styles';
@@ -42,9 +44,13 @@ export default function NavBar() {
           {/* <Typography variant="h6" className={classes.title}>
             {props.currentName}
           </Typography> */}
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h3" className={classes.title}>
             Coin Tiger
           </Typography>
+
+          <NavLink to="/coins" exact>
+            Coins
+          </NavLink>
 
           {/* {props.loggedIn === true ? (
             <Button onClick={() => handleClick()} color="inherit">
