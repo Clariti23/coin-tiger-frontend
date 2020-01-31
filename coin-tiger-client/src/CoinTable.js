@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Coin from "./Coin";
 
 export default class CoinTable extends Component {
   CoinGecko = require("coingecko-api");
@@ -18,13 +19,15 @@ export default class CoinTable extends Component {
         sparkline: false,
         price_change_percentage: "24h"
       })
-      .then(data => this.setState({ coins: data.data }));
+      .then(data =>
+        this.setState({ coins: data.data }, () => console.log(this.state.coins))
+      );
   }
 
   render() {
     return (
       <div>
-        <h3>COIN TABLE GOES HERE</h3>
+        <Coin coins={this.state.coins}></Coin>
       </div>
     );
   }

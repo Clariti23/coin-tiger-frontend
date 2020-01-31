@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import CoinTable from "./CoinTable";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,16 +77,20 @@ export default function NavTabs() {
           <LinkTab label="Coins" href="/drafts" {...a11yProps(0)} />
           <LinkTab label="Baskets" href="/trash" {...a11yProps(1)} />
           <LinkTab label="Create" href="/spam" {...a11yProps(2)} />
+          <LinkTab label="Sign in" href="/users" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Coins
+        <CoinTable> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Baskets
       </TabPanel>
       <TabPanel value={value} index={2}>
         Create
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        Sign in
       </TabPanel>
     </div>
   );
