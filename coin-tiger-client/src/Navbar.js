@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
 import Signup from "./Signup";
+import Signin from "./Signin";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -91,8 +92,9 @@ export default function NavTabs() {
         Create
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Sign up
+        Sign up or sign in
         <Signup></Signup>
+        <Signin></Signin>
       </TabPanel>
     </div>
   );
