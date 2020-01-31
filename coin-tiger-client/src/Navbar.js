@@ -9,7 +9,8 @@ import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
 import Signup from "./Signup";
 import Signin from "./Signin";
-
+import WatchlistContainer from "./WatchlistContainer";
+import BasketContainer from "./BasketContainer";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -87,6 +88,8 @@ export default function NavTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         Baskets
+        <WatchlistContainer></WatchlistContainer>
+        <BasketContainer></BasketContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Create
