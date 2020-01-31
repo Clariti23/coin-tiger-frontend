@@ -96,4 +96,4 @@ HBAR, \$2230.91 P(HBAR) = 0.0114, Q(HBAR) = 195694.71
 2020 Eth Killerz Performance = 10.19% ((( 11019.83 - 10000.00)/10000)\*100)
 
 Day 1: Set up models and associations with Rails API. Initialized both the backend and front-end repos.
-Day 2, a.m.: Worked on Controllers, posting and persisting users with salted passwords.
+Day 2, a.m.: Worked on Controllers, posting and persisting users with salted passwords. The client side set up for signing up or logging in still needs to be handled, however, which is when the programmer will need to ensure the auth controllers and jwt aspects from the backend are wired properly.
