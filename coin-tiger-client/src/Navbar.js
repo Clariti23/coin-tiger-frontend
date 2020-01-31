@@ -1,66 +1,92 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import { NavLink } from "react-router-dom";
-// import CoinTable from "./CoinTable";
-// import { NavLink } from 'react-router-dom';
+import Box from "@material-ui/core/Box";
 
-// import { createMuiTheme } from '@material-ui/core/styles';
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`nav-tabpanel-${index}`}
+      aria-labelledby={`nav-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </Typography>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired
+};
+
+function a11yProps(index) {
+  return {
+    id: `nav-tab-${index}`,
+    "aria-controls": `nav-tabpanel-${index}`
+  };
+}
+
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={event => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper
   }
 }));
 
-export default function NavBar() {
+export default function NavTabs() {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
 
-  //   let handleClick = () => {
-  //     props.handleLogout();
-  //   };
-  //   let handleIconClick = () => {
-  //     props.handleCardClick();
-  //   };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          {/* <IconButton onClick={() => handleIconClick()}>
-            <HomeOutlinedIcon />
-          </IconButton> */}
-          {/* <Typography variant="h6" className={classes.title}>
-            {props.currentName}
-          </Typography> */}
-          <Typography variant="h3" className={classes.title}>
-            Coin Tiger
-          </Typography>
-
-          <NavLink to="/coins" exact>
-            Coins
-          </NavLink>
-
-          {/* {props.loggedIn === true ? (
-            <Button onClick={() => handleClick()} color="inherit">
-              Logout
-            </Button>
-          ) : (
-            <div></div>
-          )} */}
-        </Toolbar>
+        <Tabs
+          variant="fullWidth"
+          value={value}
+          onChange={handleChange}
+          aria-label="nav tabs example"
+        >
+          <LinkTab label="Coins" href="/drafts" {...a11yProps(0)} />
+          <LinkTab label="Baskets" href="/trash" {...a11yProps(1)} />
+          <LinkTab label="Create" href="/spam" {...a11yProps(2)} />
+        </Tabs>
       </AppBar>
+      <TabPanel value={value} index={0}>
+        Coins
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Baskets
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Create
+      </TabPanel>
     </div>
   );
 }
