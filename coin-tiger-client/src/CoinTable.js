@@ -28,6 +28,7 @@ export default class CoinTable extends Component {
     return (
       <div>
         <Coin coins={this.state.coins}></Coin>
+        <h4>Powered by CoinGecko API</h4>
       </div>
     );
   }
