@@ -11,6 +11,7 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import WatchlistContainer from "./WatchlistContainer";
 import BasketContainer from "./BasketContainer";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -60,7 +61,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -96,7 +97,7 @@ export default function NavTabs() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         Sign up or sign in
-        <Signup></Signup>
+        <Signup handleSubmit={props.handleSubmit}></Signup>
         <Signin></Signin>
       </TabPanel>
     </div>
