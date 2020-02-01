@@ -1,21 +1,23 @@
-import React from "react";
-// import { useState } from "react";
+import React, { useState } from "react";
 import NavBar from "./Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
+import CoinTable from "./CoinTable";
 
 const App = props => {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const handleSubmit = e => {
-    console.log("app.js hit!");
+  let handleUserSignup = user => {
+    if (user.jwt) {
+      setCurrentUser(user.user.user.name);
+      localStorage.setItem("name", user.user.user.name);
+    }
   };
 
+  console.log(currentUser);
   return (
     <Router>
       <div>
-        <NavBar handleSubmit={handleSubmit} />
+        <NavBar handleUserSignup={handleUserSignup} currentUser={currentUser} />
       </div>
     </Router>
   );

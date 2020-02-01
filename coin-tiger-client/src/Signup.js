@@ -54,8 +54,8 @@ export default function Signup(props) {
       },
       body: JSON.stringify({ user })
     })
-      // .then(res => res.json())
-      .then(data => props.handleSubmit(data));
+      .then(res => res.json())
+      .then(data => props.handleUserSignup(data));
     alert(
       `Welcome to Coin Tiger, ${name}! Now that you've made an account, feel free to add coins to your watchlist, or monitor a portfolio by creating a basket!`
     );
