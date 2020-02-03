@@ -6,10 +6,9 @@ export default class CoinTable extends Component {
   CoinGeckoClient = new this.CoinGecko();
 
   state = {
-    coins: []
+    rows: [],
+    pageUp: false
   };
-
-  rows = [];
 
   async componentDidMount() {
     await this.CoinGeckoClient.coins
@@ -21,25 +20,26 @@ export default class CoinTable extends Component {
         sparkline: false,
         price_change_percentage: "24h"
       })
-      .then(data => this.setState({ coins: data.data }, () => this.organize()));
+      .then(data => this.organize(data));
   }
 
-  async organize(x) {
-    this.state.coins.map(coin => {
-      this.rows.push([
+  organize(x) {
+    x.data.map(coin => {
+      this.state.rows.push([
         coin.name,
         coin.symbol.toUpperCase(),
         Number.parseFloat(coin.current_price),
         Number.parseFloat(coin.price_change_percentage_24h),
         Number.parseInt(coin.market_cap)
       ]);
+      this.setState({ pageUp: true });
     });
   }
 
   render() {
     return (
       <div>
-        <EnhancedTable rows={this.rows}></EnhancedTable>
+        <EnhancedTable rows={this.state.rows}></EnhancedTable>
       </div>
     );
   }
