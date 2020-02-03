@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import CoinTable from "./CoinTable";
 
 const App = props => {
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [loggedIn, setLoggedIn] = useState(false);
   let handleUserSignup = user => {
     if (user.jwt) {
       setCurrentUser(user.user.user.name);
@@ -13,7 +13,12 @@ const App = props => {
     }
   };
 
-  console.log(currentUser);
+  useEffect(() => {
+    const user = localStorage.getItem("name");
+    if (user !== null) setCurrentUser({ user });
+    setLoggedIn(true);
+  }, []);
+
   return (
     <Router>
       <div>

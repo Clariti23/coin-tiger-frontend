@@ -88,7 +88,7 @@ export default function NavTabs(props) {
         <CoinTable> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Baskets
+        Basket
         <WatchlistContainer></WatchlistContainer>
         <BasketContainer></BasketContainer>
       </TabPanel>
