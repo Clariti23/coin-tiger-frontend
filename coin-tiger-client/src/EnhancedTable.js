@@ -47,7 +47,7 @@ export default function EnhancedTable(props) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -83,9 +83,6 @@ export default function EnhancedTable(props) {
   };
 
   const isSelected = name => selected.indexOf(name) !== -1;
-
-  //   const emptyRows =
-  //     rowsPerPage - Math.min(rowsPerPage, props.rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
