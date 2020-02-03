@@ -44,18 +44,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
-  const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
-    setOrderBy(property);
-  };
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -92,8 +84,8 @@ export default function EnhancedTable(props) {
 
   const isSelected = name => selected.indexOf(name) !== -1;
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, props.rows.length - page * rowsPerPage);
+  //   const emptyRows =
+  //     rowsPerPage - Math.min(rowsPerPage, props.rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -109,13 +101,13 @@ export default function EnhancedTable(props) {
               {props.rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row[0]);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.name)}
+                      onClick={event => handleClick(event, row[1])}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -137,22 +129,17 @@ export default function EnhancedTable(props) {
                         {row[0]}
                       </TableCell>
                       <TableCell align="right">{row[1]}</TableCell>
-                      <TableCell align="right">{row[2]}</TableCell>
-                      <TableCell align="right">{row[3]}</TableCell>
-                      <TableCell align="right">{row[4]}</TableCell>
+                      <TableCell align="right">{"$" + row[2]}</TableCell>
+                      <TableCell align="right">{row[3] + "%"}</TableCell>
+                      <TableCell align="right">{"$" + row[4]}</TableCell>
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
           count={props.rows.length}
           rowsPerPage={rowsPerPage}
