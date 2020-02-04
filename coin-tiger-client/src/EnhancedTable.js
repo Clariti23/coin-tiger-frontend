@@ -1,17 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
+// import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+// import TableSortLabel from "@material-ui/core/TableSortLabel";
+// import Toolbar from "@material-ui/core/Toolbar";
+// import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 
@@ -44,30 +42,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
-  const [selected, setSelected] = React.useState([]);
+  //   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelected(newSelected);
-  };
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [watchList, setWatchList] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -82,7 +61,9 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
 
-  const isSelected = name => selected.indexOf(name) !== -1;
+  const handleAddToWatchList = event => {
+    setWatchList(event.target.value);
+  };
 
   return (
     <div className={classes.root}>
@@ -98,22 +79,24 @@ export default function EnhancedTable(props) {
               {props.rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row[0]);
+                  //   const isItemSelected = isSelected(row[0]);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row[1])}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row[0]}
-                      selected={isItemSelected}
+                      //   onClick={event => handleClick(event, row[0])}
+                      //   role="checkbox"
+                      //   aria-checked={isItemSelected}
+                      //   tabIndex={-1}
+                      //   key={row[0]}
+                      //   selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
-                          checked={isItemSelected}
+                          onChange={handleAddToWatchList}
+                          value={row[1]}
+                          //   checked={handleAddToWatchList}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </TableCell>
