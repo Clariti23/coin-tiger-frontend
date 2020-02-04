@@ -15,7 +15,7 @@ export default class CoinTable extends Component {
       .markets({
         vs_currency: "usd",
         order: "market_cap_desc",
-        per_page: 100,
+        per_page: 70,
         page: 1,
         sparkline: false,
         price_change_percentage: "24h"
