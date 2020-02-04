@@ -24,7 +24,7 @@ export default class CoinTable extends Component {
   }
 
   organize(x) {
-    x.data.map(coin => {
+    x.data.forEach(coin => {
       this.state.rows.push([
         coin.name,
         coin.symbol.toUpperCase(),
