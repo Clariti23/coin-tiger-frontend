@@ -12,7 +12,6 @@ const App = props => {
     }
   };
 
-  console.log(currentUser);
   return (
     <Router>
       <div>
