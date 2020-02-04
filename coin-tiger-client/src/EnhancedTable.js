@@ -46,7 +46,7 @@ export default function EnhancedTable(props) {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [watchList, setWatchList] = React.useState([]);
+  // const [watchList, setWatchList] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -61,9 +61,9 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
 
-  const handleAddToWatchList = event => {
-    setWatchList(event.target.value);
-  };
+  // const handleAddToWatchList = event => {
+  //   setWatchList(event.target.value);
+  // };
 
   return (
     <div className={classes.root}>
@@ -94,7 +94,7 @@ export default function EnhancedTable(props) {
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
-                          onChange={handleAddToWatchList}
+                          // onChange={handleAddToWatchList}
                           value={row[1]}
                           //   checked={handleAddToWatchList}
                           inputProps={{ "aria-labelledby": labelId }}
