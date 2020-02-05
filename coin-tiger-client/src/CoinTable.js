@@ -39,7 +39,10 @@ export default class CoinTable extends Component {
   render() {
     return (
       <div>
-        <EnhancedTable rows={this.state.rows}></EnhancedTable>
+        <EnhancedTable
+          rows={this.state.rows}
+          currentUserId={this.props.currentUserId}
+        ></EnhancedTable>
       </div>
     );
   }

@@ -85,7 +85,7 @@ export default function NavTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <CoinTable> </CoinTable>
+        <CoinTable currentUserId={props.currentUserId}> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Baskets
