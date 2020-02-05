@@ -89,7 +89,9 @@ export default function NavTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={1}>
         Baskets
-        <WatchlistContainer></WatchlistContainer>
+        <WatchlistContainer
+          currentUserId={props.currentUserId}
+        ></WatchlistContainer>
         <BasketContainer></BasketContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>

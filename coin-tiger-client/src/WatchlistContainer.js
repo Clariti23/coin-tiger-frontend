@@ -1,10 +1,83 @@
 import React, { Component } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import FolderIcon from "@material-ui/icons/Folder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class WatchlistContainer extends Component {
+  state = {
+    watchList: []
+  };
+
+  API = "http://localhost:3000/favorites";
+
+  componentDidMount() {
+    fetch(this.API)
+      .then(res => res.json())
+      .then(data => this.filterFavorites(data));
+  }
+
+  filterFavorites = data => {
+    let accumulator = [];
+    let userFavorites = data.filter(
+      favorite => favorite.user_id === this.props.currentUserId
+    );
+    userFavorites.map(element => accumulator.push(element.symbol));
+    this.setState(
+      {
+        watchList: accumulator
+      },
+      () => console.log(this.state)
+    );
+  };
+
+  useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+      maxWidth: 752
+    },
+    demo: {
+      backgroundColor: theme.palette.background.paper
+    },
+    title: {
+      margin: theme.spacing(4, 0, 2)
+    }
+  }));
+
   render() {
     return (
       <div>
-        <h1>My Watchlist Container</h1>
+        <h1>Watchlist</h1>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h6">Watch List</Typography>
+          <div>
+            <List>
+              {this.state.watchList.map(x => (
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText> {x.slice(0, 3)}</ListItemText>
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+        </Grid>
       </div>
     );
   }
