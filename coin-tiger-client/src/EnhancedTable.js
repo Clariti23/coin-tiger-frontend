@@ -42,11 +42,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
-  //   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const [watchList, setWatchList] = React.useState([]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -62,28 +60,28 @@ export default function EnhancedTable(props) {
   };
 
   const FAVORITE_API = "http://localhost:3000/favorites";
+
   const handleAddToWatchList = event => {
-    // let symbol = event.target.value;
-
-    // let favorite = {
-    //   symbol: symbol,
-    //   user_id: props.currentUserId
-    // };
-
-    fetch(FAVORITE_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify({
-        favorite: {
-          symbol: event.target.value,
-          user_id: props.currentUserId
-        }
+    if (localStorage.name !== "") {
+      fetch(FAVORITE_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify({
+          favorite: {
+            symbol: event.target.value,
+            user_id: props.currentUserId
+          }
+        })
       })
-    }).then(response => console.log(response, "fetch post hit"));
+        .then(response => console.log(response, "fetch post hit"))
+        .then(alert(`${event.target.value} was added to your watchlist`));
+    } else {
+      alert("Please sign in to add a digital asset to your watch list");
+    }
   };
 
   return (
@@ -101,8 +99,9 @@ export default function EnhancedTable(props) {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
+
                   return (
-                    <TableRow hover>
+                    <TableRow hover key={row[1]}>
                       <TableCell padding="checkbox">
                         <Checkbox
                           onChange={handleAddToWatchList}
