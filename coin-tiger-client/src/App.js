@@ -9,7 +9,7 @@ const App = props => {
   let handleUserSignup = user => {
     if (user.jwt) {
       setCurrentUserId(user.user.user.id);
-      // console.log(user.user.user.id);
+      console.log(user.user.user.id);
       setCurrentUser(user.user.user.name);
       localStorage.setItem("name", user.user.user.name);
     }
