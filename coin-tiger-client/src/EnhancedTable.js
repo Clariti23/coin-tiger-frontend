@@ -61,9 +61,12 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
 
-  // const handleAddToWatchList = event => {
-  //   setWatchList(event.target.value);
-  // };
+  const handleAddToWatchList = event => {
+    // event.preventDefault();
+    console.log(props.currentUserId);
+    // let data = {
+    // event.target.value.toLowercase;
+  };
 
   return (
     <div className={classes.root}>
@@ -79,24 +82,13 @@ export default function EnhancedTable(props) {
               {props.rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  //   const isItemSelected = isSelected(row[0]);
                   const labelId = `enhanced-table-checkbox-${index}`;
-
                   return (
-                    <TableRow
-                      hover
-                      //   onClick={event => handleClick(event, row[0])}
-                      //   role="checkbox"
-                      //   aria-checked={isItemSelected}
-                      //   tabIndex={-1}
-                      //   key={row[0]}
-                      //   selected={isItemSelected}
-                    >
+                    <TableRow hover>
                       <TableCell padding="checkbox">
                         <Checkbox
-                          // onChange={handleAddToWatchList}
+                          onChange={handleAddToWatchList}
                           value={row[1]}
-                          //   checked={handleAddToWatchList}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </TableCell>
