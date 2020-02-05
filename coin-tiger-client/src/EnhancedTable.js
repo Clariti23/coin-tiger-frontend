@@ -61,11 +61,29 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
 
+  const FAVORITE_API = "http://localhost:3000/favorites";
   const handleAddToWatchList = event => {
-    // event.preventDefault();
-    console.log(props.currentUserId);
-    // let data = {
-    // event.target.value.toLowercase;
+    // let symbol = event.target.value;
+
+    // let favorite = {
+    //   symbol: symbol,
+    //   user_id: props.currentUserId
+    // };
+
+    fetch(FAVORITE_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify({
+        favorite: {
+          symbol: event.target.value,
+          user_id: props.currentUserId
+        }
+      })
+    }).then(response => console.log(response, "fetch post hit"));
   };
 
   return (
