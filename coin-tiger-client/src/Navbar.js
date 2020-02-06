@@ -11,6 +11,7 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import WatchlistContainer from "./WatchlistContainer";
 import BasketContainer from "./BasketContainer";
+import BasketForm from "./BasketForm";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,6 +97,7 @@ export default function NavTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         Create
+        <BasketForm></BasketForm>
       </TabPanel>
 
       <TabPanel value={value} index={3}>
