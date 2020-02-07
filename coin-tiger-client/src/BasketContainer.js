@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class BasketContainer extends Component {
   state = {
-    data: [],
+    basket: [],
     UID: null
   };
   BASKET_API = "http://localhost:3000/baskets";
@@ -17,23 +17,14 @@ export default class BasketContainer extends Component {
   }
 
   basketsFilter = data => {
-    let userBaskets = data.filter(
-      basket => basket.user_id === parseInt(this.state.UID)
-    );
-
-    console.log("userBaskets", userBaskets);
+    let userBasket = data.filter(b => b.user_id === parseInt(this.state.UID));
+    this.setState({ basket: userBasket }, () => console.log);
   };
 
   render() {
     return (
       <div>
-        <h1>My Baskets</h1>
-        <h3>BASKET NAME:</h3>
-        <h3>INDEXING DATE: </h3>
-        <h4>COMPONENT 1:</h4>
-        <h4>COMPONENT 1 QUANTITY:</h4>
-        <h4>COMPONENT 2:</h4>
-        <h4>COMPONENT 2 QUANTITY:</h4>
+        <p>Basket Container</p>
       </div>
     );
   }
