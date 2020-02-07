@@ -14,12 +14,18 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class WatchlistContainer extends Component {
   state = {
-    watchList: []
+    watchList: [],
+    name: "",
+    UID: null
   };
 
   API = "http://localhost:3000/favorites";
 
   componentDidMount() {
+    const name = localStorage.getItem("name");
+    const UID = localStorage.getItem("UID");
+    this.setState({ name, UID });
+    console.log(localStorage);
     fetch(this.API)
       .then(res => res.json())
       .then(data => this.filterFavorites(data));
@@ -28,7 +34,7 @@ export default class WatchlistContainer extends Component {
   filterFavorites = data => {
     let accumulator = [];
     let userFavorites = data.filter(
-      favorite => favorite.user_id === this.props.currentUserId
+      favorite => favorite.user_id === parseInt(this.state.UID)
     );
     userFavorites.map(element => accumulator.push(element.symbol));
     this.setState(
@@ -69,7 +75,11 @@ export default class WatchlistContainer extends Component {
                   </ListItemAvatar>
                   <ListItemText> {x.slice(0, 4)}</ListItemText>
                   <ListItemSecondaryAction>
-                    <IconButton onClick={()=> console.log(x.id)}edge="end" aria-label="delete">
+                    <IconButton
+                      onClick={() => console.log(x.id)}
+                      edge="end"
+                      aria-label="delete"
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
