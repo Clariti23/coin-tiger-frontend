@@ -15,6 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
+import { Link } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -141,6 +142,9 @@ export default function EnhancedTable(props) {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
+      <Link variant="p">
+        <a href="https://www.coingecko.com/en/api">Powered by CoinGecko API</a>
+      </Link>
     </div>
   );
 }
