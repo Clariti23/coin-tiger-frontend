@@ -73,10 +73,10 @@ export default class WatchlistContainer extends Component {
                       <AttachMoneyIcon />
                     </Avatar>
                   </ListItemAvatar>
-                  <ListItemText> {x.slice(0, 4)}</ListItemText>
+                  <ListItemText>{x.slice(0, 4)}</ListItemText>
                   <ListItemSecondaryAction>
                     <IconButton
-                      onClick={() => console.log(x.id)}
+                      onClick={() => console.log(x.slice(0, 4))}
                       edge="end"
                       aria-label="delete"
                     >

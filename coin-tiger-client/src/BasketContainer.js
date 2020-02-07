@@ -1,13 +1,28 @@
 import React, { Component } from "react";
 
 export default class BasketContainer extends Component {
+  state = {
+    data: [],
+    UID: null
+  };
   BASKET_API = "http://localhost:3000/baskets";
 
   componentDidMount() {
+    const UID = localStorage.getItem("UID");
+    this.setState({ UID });
+
     fetch(this.BASKET_API)
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => this.basketsFilter(data));
   }
+
+  basketsFilter = data => {
+    let userBaskets = data.filter(
+      basket => basket.user_id === parseInt(this.state.UID)
+    );
+
+    console.log("userBaskets", userBaskets);
+  };
 
   render() {
     return (
