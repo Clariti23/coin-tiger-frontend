@@ -104,7 +104,7 @@ export default function NavTabs(props) {
         <Signup handleUserSignup={props.handleUserSignup}>
           Sign up or sign in
         </Signup>
-        <Signin></Signin>
+        <Signin handleUserSignup={props.handleUserSignup}></Signin>
       </TabPanel>
     </div>
   );

@@ -73,8 +73,10 @@ export default function SignIn(props) {
         Accept: "application/json"
       },
       body: JSON.stringify({ user })
-    }).then(res => res.json());
-    // .then(data => props.handleLogin);
+    })
+      .then(res => res.json())
+      .then(data => props.handleUserSignup(data));
+    alert(`Welcome back to CoinTiger, ${email}!`);
   };
 
   return (
