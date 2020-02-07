@@ -69,7 +69,7 @@ export default class WatchlistContainer extends Component {
                   </ListItemAvatar>
                   <ListItemText> {x.slice(0, 4)}</ListItemText>
                   <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="delete">
+                    <IconButton onClick={()=> console.log(x.id)}edge="end" aria-label="delete">
                       <DeleteIcon />
                     </IconButton>
                   </ListItemSecondaryAction>
