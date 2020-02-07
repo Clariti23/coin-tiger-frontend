@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class BasketContainer extends Component {
   state = {
-    data: [],
+    basket: [],
     UID: null
   };
   BASKET_API = "http://localhost:3000/baskets";
@@ -13,27 +13,34 @@ export default class BasketContainer extends Component {
 
     fetch(this.BASKET_API)
       .then(response => response.json())
-      .then(data => this.basketsFilter(data));
+      .then(data => this.basketCalculate(data));
   }
 
-  basketsFilter = data => {
-    let userBaskets = data.filter(
-      basket => basket.user_id === parseInt(this.state.UID)
-    );
+  basketCalculate = data => {
+    let userBasket = data.filter(b => b.user_id === parseInt(this.state.UID));
+    this.setState({ basket: userBasket }, () => console.log(this.state));
 
-    console.log("userBaskets", userBaskets);
+    // //Store Coin Components
+    // let coinOneSymbol = this.state.basket.coinOne;
+    // let coinTwoSymbol = this.state.basket.coinTwo;
+    // let coinThreeSymbol = this.state.basket.coinThree;
+    // let coinFourSymbol = this.state.basket.coinFour;
+    // let coinFiveSymbol = this.state.basket.coinFive;
+
+    // //Initial quantites of each coin
+    // let coinOneQ = this.state.basket.coin_1_q;
+    // let coinTwoQ = this.state.basket.coin_2_q;
+    // let coinThreeQ = this.state.basket.coin_3_q;
+    // let coinFourQ = this.state.basket.coin_4_q;
+    // let coinFiveQ = this.state.basket.coin_5_q;
+
+    // let basketValue = this.state.
   };
 
   render() {
     return (
       <div>
-        <h1>My Baskets</h1>
-        <h3>BASKET NAME:</h3>
-        <h3>INDEXING DATE: </h3>
-        <h4>COMPONENT 1:</h4>
-        <h4>COMPONENT 1 QUANTITY:</h4>
-        <h4>COMPONENT 2:</h4>
-        <h4>COMPONENT 2 QUANTITY:</h4>
+        <p>Basket Container</p>
       </div>
     );
   }
