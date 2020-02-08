@@ -63,6 +63,8 @@ export default function EnhancedTable(props) {
   const FAVORITE_API = "http://localhost:3000/favorites";
 
   const handleAddToWatchList = event => {
+    let coin_gecko_id = event.target.id;
+
     if (localStorage.name !== "") {
       fetch(FAVORITE_API, {
         method: "POST",
@@ -74,7 +76,8 @@ export default function EnhancedTable(props) {
         body: JSON.stringify({
           favorite: {
             symbol: event.target.value,
-            user_id: props.currentUserId
+            user_id: props.currentUserId,
+            coin_gecko_id: coin_gecko_id
           }
         })
       })
@@ -107,6 +110,7 @@ export default function EnhancedTable(props) {
                         <Checkbox
                           onChange={handleAddToWatchList}
                           value={row[1]}
+                          id={row[5]}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </TableCell>

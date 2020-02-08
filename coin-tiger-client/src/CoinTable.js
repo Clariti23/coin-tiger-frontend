@@ -23,14 +23,16 @@ export default class CoinTable extends Component {
       .then(data => this.organize(data));
   }
 
-  organize(x) {
-    x.data.forEach(coin => {
+  //data being passed to enhanced table
+  organize(all) {
+    all.data.forEach(coin => {
       this.state.rows.push([
         coin.name,
         coin.symbol.toUpperCase(),
         Number.parseFloat(coin.current_price),
         Number.parseFloat(coin.price_change_percentage_24h),
-        Number.parseInt(coin.market_cap)
+        Number.parseInt(coin.market_cap),
+        coin.id
       ]);
       this.setState({ pageUp: true });
     });
