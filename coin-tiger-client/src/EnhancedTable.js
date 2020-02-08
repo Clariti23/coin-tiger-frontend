@@ -146,8 +146,8 @@ export default function EnhancedTable(props) {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-      <Link variant="p">
-        <a href="https://www.coingecko.com/en/api">Powered by CoinGecko API</a>
+      <Link href="https://www.coingecko.com/en/api" underline="hover">
+        Powered by CoinGecko API
       </Link>
     </div>
   );

@@ -66,8 +66,8 @@ export default class WatchlistContainer extends Component {
           <Typography variant="h6">Watch List</Typography>
           <div>
             <List>
-              {this.state.watchList.map(x => (
-                <ListItem>
+              {this.state.watchList.map((x, index) => (
+                <ListItem key={index}>
                   <ListItemAvatar>
                     <Avatar>
                       <AttachMoneyIcon />

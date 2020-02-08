@@ -23,7 +23,6 @@ export default class CoinTable extends Component {
       .then(data => this.organize(data));
   }
 
-  //data being passed to enhanced table
   organize(all) {
     all.data.forEach(coin => {
       this.state.rows.push([
