@@ -12,7 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 // import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import CoinGeckoLogo from "./CoinGeckoLogo.png";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import { Link } from "@material-ui/core";
@@ -148,6 +148,12 @@ export default function EnhancedTable(props) {
       />
       <Link href="https://www.coingecko.com/en/api" underline="hover">
         Powered by CoinGecko API
+        <img
+          src={CoinGeckoLogo}
+          alt="CoinGecko logo"
+          width="25"
+          height="25"
+        ></img>
       </Link>
     </div>
   );

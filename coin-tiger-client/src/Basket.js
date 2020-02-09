@@ -5,12 +5,11 @@ export default class Basket extends Component {
     console.log("props ", this.props);
   }
 
-  //BasketName
-  // all.forEach(
+  // this.propsall.forEach(
   //  b =>
-  //Basket name
+  // Basket name
   //   b.name
-  //Coin Components
+  // Coin Components
   // let coinOneSymbol = b.coinOne;
   // let coinTwoSymbol = b.coinTwo;
   // let coinThreeSymbol = b.coinThree;
@@ -23,10 +22,26 @@ export default class Basket extends Component {
   // let coinThreeQ = b.coin_3_q;
   // let coinFourQ = b.coin_4_q;
   // let coinFiveQ = b.coin_5_q;
-  //);
+  // );
   // let basketValue = this.state.
 
   render() {
-    return <div>BasketComponent says Hello World</div>;
+    return (
+      <div>
+        <p>
+          Basket Number: {this.props.basket.id}
+          <br></br>
+          Basket Name: {this.props.basket.name}
+          <br></br>
+          Basket Component 1: {this.props.basket.coinOne}
+          <br></br>
+          Basket Component 2: {this.props.basket.coinTwo}
+          <br></br>
+          Date of Basket Creation: {this.props.basket.indexDate}
+          <br></br>
+          Initial Basket Value: {`$${this.props.basket.initialBasketValue}`}
+        </p>
+      </div>
+    );
   }
 }
