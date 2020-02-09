@@ -14,11 +14,12 @@ export default class Basket extends Component {
   coinFiveQ = this.props.basket.coin_5_q;
 
   state = {
-    coinOnePrice: null,
-    coinTwoPrice: null,
-    coinThreePrice: null,
-    coinFourPrice: null,
-    coinFivePrice: null
+    coinOnePrice: 0,
+    coinTwoPrice: 0,
+    coinThreePrice: 0,
+    coinFourPrice: 0,
+    coinFivePrice: 0,
+    marketValue: 0
   };
 
   CoinGecko = require("coingecko-api");
@@ -42,7 +43,6 @@ export default class Basket extends Component {
   }
 
   setPrices = data => {
-    console.log(data);
     let usdVals = Object.values(data.data);
 
     let prices = [];
@@ -56,12 +56,25 @@ export default class Basket extends Component {
         coinFourPrice: prices[3],
         coinFivePrice: prices[4]
       },
-      () => console.log(this.state)
+      () => this.currentBasketValue()
     );
   };
 
   //   const initialBasketValue = this.props.basket.initialBasketValue
-  //   const currentBasketValue =
+  currentBasketValue = () => {
+    // console.log(typeof this.state.coinOnePrice);
+    // console.log(typeof this.coinOneQ);
+    let valueOne = this.state.coinOnePrice * this.coinOneQ;
+    let valueTwo = this.state.coinTwoPrice * this.coinTwoQ;
+    // let valueThree = this.state.coinThreePrice * this.coinThreeQ;
+    // let valueFour = this.state.coinFourPrice * this.coinFourQ;
+    // let valueFive = this.state.coinFivePrice * this.coinFiveQ;
+
+    let currentBasketValue = valueOne + valueTwo;
+    this.setState({
+      marketValue: currentBasketValue
+    });
+  };
 
   //   const basketPerformance = (((CurrentValue - InitialBbasketValue)/InitialBbasketValue)*100)
 
@@ -79,8 +92,9 @@ export default class Basket extends Component {
           <br></br>
           Date of Basket Creation: {this.props.basket.indexDate}
           <br></br>
-          Initial Basket Value: {`$${this.props.basket.initialBasketValue}`}
+          Initial Value: {`$${this.props.basket.initialBasketValue}`}
           <br></br>
+          Current Market Value: {`$${this.state.marketValue}`}
         </p>
       </div>
     );
