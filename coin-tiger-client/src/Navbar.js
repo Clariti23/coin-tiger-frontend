@@ -96,7 +96,7 @@ export default function NavTabs(props) {
         <BasketContainer></BasketContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Create
+        Select up to five currencies to build a basket.
         <BasketForm></BasketForm>
       </TabPanel>
 
