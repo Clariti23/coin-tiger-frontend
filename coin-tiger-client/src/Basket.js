@@ -41,7 +41,8 @@ export default class Basket extends Component {
       })
       .then(data => this.setPrices(data));
   }
-
+  ///For some reason, the coinId is BTC but is getting assigned the Ethereum price, and vice versa.
+  //This was the last bug.
   setPrices = data => {
     let usdVals = Object.values(data.data);
 
@@ -50,8 +51,8 @@ export default class Basket extends Component {
 
     this.setState(
       {
-        coinOnePrice: prices[0],
-        coinTwoPrice: prices[1],
+        coinOnePrice: prices[1],
+        coinTwoPrice: prices[0],
         coinThreePrice: prices[2],
         coinFourPrice: prices[3],
         coinFivePrice: prices[4]
@@ -60,23 +61,42 @@ export default class Basket extends Component {
     );
   };
 
-  //   const initialBasketValue = this.props.basket.initialBasketValue
-  currentBasketValue = () => {
-    // console.log(typeof this.state.coinOnePrice);
-    // console.log(typeof this.coinOneQ);
-    let valueOne = this.state.coinOnePrice * this.coinOneQ;
-    let valueTwo = this.state.coinTwoPrice * this.coinTwoQ;
-    // let valueThree = this.state.coinThreePrice * this.coinThreeQ;
-    // let valueFour = this.state.coinFourPrice * this.coinFourQ;
-    // let valueFive = this.state.coinFivePrice * this.coinFiveQ;
+  //need to check for type errors here
 
-    let currentBasketValue = valueOne + valueTwo;
-    this.setState({
-      marketValue: currentBasketValue
-    });
+  currentBasketValue = () => {
+    let valueOne = parseFloat(this.state.coinOnePrice * this.coinOneQ);
+    let valueTwo = parseFloat(this.state.coinTwoPrice * this.coinTwoQ);
+    let valueThree = parseFloat(this.state.coinThreePrice * this.coinThreeQ);
+    let valueFour = parseFloat(this.state.coinFourPrice * this.coinFourQ);
+    let valueFive = parseFloat(this.state.coinFivePrice * this.coinFiveQ);
+
+    let vals = [valueOne, valueTwo, valueThree, valueFour, valueFive];
+    let currentBasketValue = 0;
+
+    for (let i = 0; i < vals.length; i++) {
+      if (vals[i] >= 0) {
+        currentBasketValue += vals[i];
+      }
+    }
+
+    console.log(currentBasketValue);
+
+    this.setState(
+      {
+        marketValue: currentBasketValue
+      },
+      () => console.log(this.state)
+    );
   };
 
-  //   const basketPerformance = (((CurrentValue - InitialBbasketValue)/InitialBbasketValue)*100)
+  calculatePerformance = () => {
+    let initialBasketValue = this.props.basket.initialBasketValue;
+    let currentBasketValue = this.state.marketValue;
+
+    return (
+      100 * ((currentBasketValue - initialBasketValue) / initialBasketValue)
+    );
+  };
 
   render() {
     return (
@@ -95,6 +115,8 @@ export default class Basket extends Component {
           Initial Value: {`$${this.props.basket.initialBasketValue}`}
           <br></br>
           Current Market Value: {`$${this.state.marketValue}`}
+          <br></br>
+          Performance to Date: {`${this.calculatePerformance()}%`}
         </p>
       </div>
     );
