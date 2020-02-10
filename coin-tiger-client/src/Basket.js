@@ -41,9 +41,10 @@ export default class Basket extends Component {
       })
       .then(data => this.setPrices(data));
   }
-  ///For some reason, the coinId is BTC but is getting assigned the Ethereum price, and vice versa.
-  //This was the last bug.
+
   setPrices = data => {
+    console.log(data.data);
+
     let usdVals = Object.values(data.data);
 
     let prices = [];
@@ -51,8 +52,8 @@ export default class Basket extends Component {
 
     this.setState(
       {
-        coinOnePrice: prices[1],
-        coinTwoPrice: prices[0],
+        coinOnePrice: prices[0],
+        coinTwoPrice: prices[1],
         coinThreePrice: prices[2],
         coinFourPrice: prices[3],
         coinFivePrice: prices[4]
@@ -60,8 +61,6 @@ export default class Basket extends Component {
       () => this.currentBasketValue()
     );
   };
-
-  //need to check for type errors here
 
   currentBasketValue = () => {
     let valueOne = parseFloat(this.state.coinOnePrice * this.coinOneQ);
@@ -78,9 +77,6 @@ export default class Basket extends Component {
         currentBasketValue += vals[i];
       }
     }
-
-    console.log(currentBasketValue);
-
     this.setState(
       {
         marketValue: currentBasketValue
@@ -93,9 +89,11 @@ export default class Basket extends Component {
     let initialBasketValue = this.props.basket.initialBasketValue;
     let currentBasketValue = this.state.marketValue;
 
-    return (
-      100 * ((currentBasketValue - initialBasketValue) / initialBasketValue)
-    );
+    let percentageReturn =
+      100 * ((currentBasketValue - initialBasketValue) / initialBasketValue);
+
+    let performance = percentageReturn.toString().slice(0, 5);
+    return parseFloat(performance);
   };
 
   render() {
