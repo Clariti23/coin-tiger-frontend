@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +29,7 @@ export default function BasketForm() {
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
-  const [currency1Q, setCurrency1Q] = React.useState("");
+  const [currency1Q, setCurrency1Q] = React.useState(0);
   const [currency1Amount, setCurrency1Amount] = React.useState("");
 
   const [currency2, setCurrency2] = React.useState("");
@@ -69,78 +70,84 @@ export default function BasketForm() {
   };
 
   const handleAmountOne = event => {
-    setCurrency1Amount(event.value.target);
+    setCurrency1Amount(event.target.value);
   };
 
-  const handleChange1 = async event => {
+  const handleChange1 = event => {
     const items = event.target.value.split(",");
-    console.log(items);
     setCurrency1(items[0]);
     setCurrency1API(items[1]);
-
-    // await fetch(
-    //   `https://api.coingecko.com/api/v3/coins/${items[1]}/history?date=${indexDate}&localization=false%20`
-    // )
-    //   .then(resp => resp.json())
-    //   .then(data => quantityConversion(data.market_data.current_price.usd));
-
-    // const quantityConversion = historicalPrice => {
-    //   let quantity = currency1Amount / historicalPrice;
-    //   setCurrency1Q({ quantity }, () => console.log(currency1Q));
-    // };
   };
 
-  console.log(currency1);
   const handleChange2 = event => {
-    setCurrency2(event.target.value);
-    setCurrency2API(event.target.id);
+    const items = event.target.value.split(",");
+    setCurrency2(items[0]);
+    setCurrency2API(items[1]);
   };
   const handleChange3 = event => {
-    setCurrency3(event.target.value);
-    setCurrency3API(event.target.id);
+    const items = event.target.value.split(",");
+    setCurrency3(items[0]);
+    setCurrency3API(items[1]);
   };
+
   const handleChange4 = event => {
-    setCurrency4(event.target.value);
-    setCurrency4API(event.target.id);
+    const items = event.target.value.split(",");
+    setCurrency4(items[0]);
+    setCurrency4API(items[1]);
   };
   const handleChange5 = event => {
-    setCurrency5(event.target.value);
-    setCurrency5API(event.target.id);
+    const items = event.target.value.split(",");
+    setCurrency5(items[0]);
+    setCurrency5API(items[1]);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    let data = {
-      name: name,
-      initialBasketValue: 10000,
-      indexDate: indexDate,
-      coinOne: currency1,
-      coin_1_q: "placeholder",
-      coinOneId: currency1API,
-      coinTwo: currency2,
-      coin_2_q: "placeholder",
-      coinTwoId: currency2API,
-      coinThree: currency3,
-      coin_3_q: "placeholder",
-      coinThreeId: currency3API,
-      coinFour: currency4,
-      coin_4_q: "placeholder",
-      coinFourId: currency4API,
-      coinFive: currency5,
-      coin_5_q: "placeholder",
-      coinFiveId: currency5API,
-      user_id: UID
-    };
 
-    // fetch(FavoritesAPI, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json"
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then(response => console.log("post request sent", response));
+    const quantityConversion = price => {
+      const q = currency1Amount / price;
+      console.log(q);
+      setCurrency1Q(q);
+    };
+    console.log(currency1Q);
+    await fetch(
+      `https://api.coingecko.com/api/v3/coins/${currency1API}/history?date=${indexDate}&localization=false%20`
+    )
+      .then(resp => resp.json())
+      .then(data => quantityConversion(data.market_data.current_price.usd));
   };
+
+  // let data = {
+  //   name: name,
+  //   initialBasketValue: 10000,
+  //   indexDate: indexDate,
+  //   coinOne: currency1,
+  //   coin_1_q: "placeholder",
+  //   coinOneId: currency1API,
+  //   coinTwo: currency2,
+  //   coin_2_q: "placeholder",
+  //   coinTwoId: currency2API,
+  //   coinThree: currency3,
+  //   coin_3_q: "placeholder",
+  //   coinThreeId: currency3API,
+  //   coinFour: currency4,
+  //   coin_4_q: "placeholder",
+  //   coinFourId: currency4API,
+  //   coinFive: currency5,
+  //   coin_5_q: "placeholder",
+  //   coinFiveId: currency5API,
+  //   user_id: UID
+  // };
+
+  // fetch(FavoritesAPI, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json"
+  //   },
+  //   body: JSON.stringify(data)
+  // }).then(response => console.log("post request sent", response));
+  //};
 
   return (
     <div>
@@ -192,6 +199,7 @@ export default function BasketForm() {
           <TextField
             id="component 1"
             select
+            label={currency1}
             value={currency1}
             onChange={handleChange1}
             SelectProps={{
@@ -199,8 +207,8 @@ export default function BasketForm() {
             }}
             helperText="Please select your currency"
           >
-            {watchList.map(option => (
-              <option key={option.value} id={option[1]} value={option}>
+            {watchList.map((option, index) => (
+              <option key={index} value={option}>
                 {option[0]}
               </option>
             ))}
@@ -220,6 +228,7 @@ export default function BasketForm() {
           <TextField
             id="component 2"
             select
+            label={currency2}
             value={currency2}
             onChange={handleChange2}
             SelectProps={{
@@ -227,8 +236,8 @@ export default function BasketForm() {
             }}
             helperText="Please select your currency"
           >
-            {watchList.map(option => (
-              <option key={option.value} id={option[1]} value={option[0]}>
+            {watchList.map((option, index) => (
+              <option key={index} value={option}>
                 {option[0]}
               </option>
             ))}
@@ -248,6 +257,7 @@ export default function BasketForm() {
           <TextField
             id="component 3"
             select
+            label={currency3}
             value={currency3}
             onChange={handleChange3}
             SelectProps={{
@@ -255,8 +265,8 @@ export default function BasketForm() {
             }}
             helperText="Please select your currency"
           >
-            {watchList.map(option => (
-              <option key={option.value} id={option[1]} value={option[0]}>
+            {watchList.map((option, index) => (
+              <option key={index} value={option}>
                 {option[0]}
               </option>
             ))}
@@ -276,6 +286,7 @@ export default function BasketForm() {
           <TextField
             id="component 4"
             select
+            label={currency4}
             value={currency4}
             onChange={handleChange4}
             SelectProps={{
@@ -283,8 +294,8 @@ export default function BasketForm() {
             }}
             helperText="Please select your currency"
           >
-            {watchList.map(option => (
-              <option key={option.value} id={option[1]} value={option[0]}>
+            {watchList.map((option, index) => (
+              <option key={index} value={option}>
                 {option[0]}
               </option>
             ))}
@@ -304,6 +315,7 @@ export default function BasketForm() {
           <TextField
             id="component 5"
             select
+            label={currency5}
             value={currency5}
             onChange={handleChange5}
             SelectProps={{
@@ -311,12 +323,15 @@ export default function BasketForm() {
             }}
             helperText="Please select your currency"
           >
-            {watchList.map(option => (
-              <option key={option.value} id={option[1]} value={option[0]}>
+            {watchList.map((option, index) => (
+              <option key={index} value={option}>
                 {option[0]}
               </option>
             ))}
           </TextField>
+          <Button type="submit" color="primary" variant="contained">
+            CREATE BASKET
+          </Button>
         </div>
       </form>
     </div>
