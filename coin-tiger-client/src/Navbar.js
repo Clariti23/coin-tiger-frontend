@@ -96,7 +96,8 @@ export default function NavTabs(props) {
         <BasketContainer></BasketContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Select up to five currencies to build a basket.
+        Allocate $10,000 across up to five currencies from your watchlist to
+        build a basket. Then click create. Boom!
         <BasketForm></BasketForm>
       </TabPanel>
 
