@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasketForm() {
   const classes = useStyles();
+  const [name, setName] = React.useState("");
   const [currency1, setCurrency1] = React.useState("");
   const [currency2, setCurrency2] = React.useState("");
   const [currency3, setCurrency3] = React.useState("");
@@ -61,9 +62,29 @@ export default function BasketForm() {
     setCurrency5(event.target.value);
   };
 
+  const handleNameChange = event => {
+    setName(event.target.value);
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
+    // let data = {};
+  };
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
+      <form
+        className={classes.root}
+        noValidate
+        autoComplete="off"
+        onSubmit={event => handleSubmit(event)}
+      >
+        <TextField
+          id="name"
+          label="Basket Name"
+          required
+          onChange={event => {
+            handleNameChange(event);
+          }}
+        />
         <TextField id="amount1" label="Amount 1" variant="filled" />
         <div className={classes.root2}>
           <TextField
