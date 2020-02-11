@@ -67,7 +67,36 @@ export default function BasketForm() {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    // let data = {};
+    let data = {
+      name: name,
+      initialBasketValue: "placeholder",
+      indexData: "placeholder",
+      coinOne: currency1,
+      coin_1_q: "placeholder",
+      coinOneId: "placeholder",
+      coinTwo: currency2,
+      coin_2_q: "placeholder",
+      coinTwoId: "placeholder",
+      coinThree: currency3,
+      coin_3_q: "placeholder",
+      coinThreeId: "placeholder",
+      coinFour: currency4,
+      coin_4_q: "placeholder",
+      coinFourId: "placeholder",
+      coinFive: currency5,
+      coin_5_q: "placeholder",
+      coinFiveId: "placeholder",
+      user_id: UID
+    };
+
+    fetch(FavoritesAPI, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(response => console.log("post request sent", response));
   };
   return (
     <div>
