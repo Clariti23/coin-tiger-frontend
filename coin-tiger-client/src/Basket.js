@@ -42,21 +42,32 @@ export default class Basket extends Component {
       .then(data => this.setPrices(data));
   }
 
-  setPrices = data => {
-    console.log(data.data);
-
-    let usdVals = Object.values(data.data);
-
-    let prices = [];
-    usdVals.forEach(row => prices.push(row.usd));
+  setPrices = async data => {
+    const a = await data.data[this.coinOneId].usd;
+    const b =
+      data.data[this.coinTwoId] !== undefined
+        ? data.data[this.coinTwoId].usd
+        : "";
+    const c =
+      data.data[this.coinThreeId] !== undefined
+        ? data.data[this.coinThreeId].usd
+        : "";
+    const d =
+      data.data[this.coinFourId] !== undefined
+        ? data.data[this.coinFourId].usd
+        : "";
+    const e =
+      data.data[this.coinFiveId] !== undefined
+        ? data.data[this.coinFiveId].usd
+        : "";
 
     this.setState(
       {
-        coinOnePrice: prices[0],
-        coinTwoPrice: prices[1],
-        coinThreePrice: prices[2],
-        coinFourPrice: prices[3],
-        coinFivePrice: prices[4]
+        coinOnePrice: a,
+        coinTwoPrice: b,
+        coinThreePrice: c,
+        coinFourPrice: d,
+        coinFivePrice: e
       },
       () => this.currentBasketValue()
     );
