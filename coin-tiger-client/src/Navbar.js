@@ -70,6 +70,9 @@ export default function NavTabs(props) {
     setValue(newValue);
   };
 
+  const handleLogout = () => {
+    props.handleLogout();
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -100,12 +103,13 @@ export default function NavTabs(props) {
         <BasketForm></BasketForm>
       </TabPanel>
 
-      <TabPanel value={value} index={3}>
-        <Signup handleUserSignup={props.handleUserSignup}>
-          Sign up or sign in
-        </Signup>
-        <Signin handleUserSignup={props.handleUserSignup}></Signin>
-      </TabPanel>
+      <div>
+        <TabPanel value={value} index={3}>
+          {/* <Signup handleUserSignup={props.handleUserSignup}>sign up</Signup> */}
+          <Signin handleUserSignup={props.handleUserSignup}></Signin>
+        </TabPanel>
+      </div>
     </div>
   );
 }
+//if the user logged in is true, then show the Log

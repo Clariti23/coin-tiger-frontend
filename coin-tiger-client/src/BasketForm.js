@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -19,13 +19,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function BasketForm() {
-  const CoinGecko = require("coingecko-api");
-  const CoinGeckoClient = new CoinGecko();
-
   const classes = useStyles();
   const [name, setName] = React.useState("");
   const [indexDate, setIndexDate] = React.useState("");
-  const [initialBasketValue, setInitialBasketValue] = React.useState("");
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
@@ -62,7 +58,7 @@ export default function BasketForm() {
     fetch(FavoritesAPI)
       .then(res => res.json())
       .then(data => collectFavorites(data));
-  }, []);
+  });
 
   const collectFavorites = data => {
     let collected = [];
