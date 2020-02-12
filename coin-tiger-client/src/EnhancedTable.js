@@ -16,6 +16,7 @@ import CoinGeckoLogo from "./CoinGeckoLogo.png";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import { Link } from "@material-ui/core";
+import TableHeader from "./TableHeader";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -98,6 +99,11 @@ export default function EnhancedTable(props) {
             size={dense ? "small" : "medium"}
             aria-label="enhanced table"
           >
+            <TableHeader
+              classes={classes}
+              rowCount={props.rows.length}
+            ></TableHeader>
+
             <TableBody>
               {props.rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -122,10 +128,10 @@ export default function EnhancedTable(props) {
                       >
                         {row[0]}
                       </TableCell>
-                      <TableCell align="right">{row[1]}</TableCell>
-                      <TableCell align="right">{"$" + row[2]}</TableCell>
-                      <TableCell align="right">{row[3] + "%"}</TableCell>
-                      <TableCell align="right">{"$" + row[4]}</TableCell>
+                      <TableCell>{row[1]}</TableCell>
+                      <TableCell>{"$" + row[2]}</TableCell>
+                      <TableCell>{row[3] + "%"}</TableCell>
+                      <TableCell>{"$" + row[4]}</TableCell>
                     </TableRow>
                   );
                 })}
