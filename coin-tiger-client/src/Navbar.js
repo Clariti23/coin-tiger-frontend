@@ -89,14 +89,14 @@ export default function NavTabs(props) {
         <CoinTable currentUserId={props.currentUserId}> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Baskets
         <WatchlistContainer
           currentUserId={props.currentUserId}
         ></WatchlistContainer>
         <BasketContainer></BasketContainer>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Select up to five currencies to build a basket.
+        Allocate $10,000 across up to five currencies from your watchlist to
+        build a basket. Then click create. Boom!
         <BasketForm></BasketForm>
       </TabPanel>
 

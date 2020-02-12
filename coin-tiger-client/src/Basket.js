@@ -119,6 +119,12 @@ export default class Basket extends Component {
           <br></br>
           Basket Component 2: {this.props.basket.coinTwo}
           <br></br>
+          Basket Component 3: {this.props.basket.coinThree}
+          <br></br>
+          Basket Component 4: {this.props.basket.coinFour}
+          <br></br>
+          Basket Component 5: {this.props.basket.coinFive}
+          <br></br>
           Date of Basket Creation: {this.props.basket.indexDate}
           <br></br>
           Initial Value: {`$${this.props.basket.initialBasketValue}`}
