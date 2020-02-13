@@ -19,14 +19,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function BasketForm() {
+  const CoinGecko = require("coingecko-api");
+  const CoinGeckoClient = new CoinGecko();
+
   const classes = useStyles();
   const [name, setName] = React.useState("");
   const [indexDate, setIndexDate] = React.useState("");
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
-  const [currency1Q, setCurrency1Q] = React.useState(0);
   const [currency1Amount, setCurrency1Amount] = React.useState("");
+  const [currency1Q, setCurrency1Q] = React.useState(0);
 
   const [currency2, setCurrency2] = React.useState("");
   const [currency2API, setCurrency2API] = React.useState("");
@@ -174,7 +177,7 @@ export default function BasketForm() {
     const quantity3Conversion = price => {
       const q = currency3Amount / price;
       console.log(q);
-
+      console.log("string---------------!!!", currency1Q);
       setCurrency3Q(q);
     };
 
@@ -210,7 +213,6 @@ export default function BasketForm() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-
     await getQuantities(event);
 
     fetch(BasketsAPI, {
@@ -225,7 +227,7 @@ export default function BasketForm() {
   };
 
   return (
-    <div>
+    <div className="box">
       <form
         className={classes.root}
         noValidate

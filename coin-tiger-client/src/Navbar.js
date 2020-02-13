@@ -12,6 +12,7 @@ import Signin from "./Signin";
 import WatchlistContainer from "./WatchlistContainer";
 import BasketContainer from "./BasketContainer";
 import BasketForm from "./BasketForm";
+import Style from "./App.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,9 +71,9 @@ export default function NavTabs(props) {
     setValue(newValue);
   };
 
-  const handleLogout = () => {
-    props.handleLogout();
-  };
+  // const handleLogout = () => {
+  //   props.handleLogout();
+  // };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -92,10 +93,12 @@ export default function NavTabs(props) {
         <CoinTable currentUserId={props.currentUserId}> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WatchlistContainer
-          currentUserId={props.currentUserId}
-        ></WatchlistContainer>
-        <BasketContainer></BasketContainer>
+        <div className="box">
+          <WatchlistContainer
+            currentUserId={props.currentUserId}
+          ></WatchlistContainer>
+          <BasketContainer></BasketContainer>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Allocate $10,000 across up to five currencies from your watchlist to

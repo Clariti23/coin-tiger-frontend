@@ -10,6 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+
 // import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class WatchlistContainer extends Component {
@@ -61,7 +62,7 @@ export default class WatchlistContainer extends Component {
 
   useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
+      // flexGrow: 1,
       maxWidth: 752
     },
     demo: {
@@ -75,9 +76,9 @@ export default class WatchlistContainer extends Component {
   render() {
     return (
       <div>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h6">Watch List</Typography>
-          <div>
+        <Grid container md={6}>
+          <Typography variant="h5">My Watch List</Typography>
+          <div style={{ display: "flex" }}>
             <List>
               {this.state.watchList.map((x, index) => (
                 <ListItem key={index}>
