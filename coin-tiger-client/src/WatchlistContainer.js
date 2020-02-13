@@ -3,14 +3,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+// import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import DeleteIcon from "@material-ui/icons/Delete";
+// import DeleteIcon from "@material-ui/icons/Delete";
 
 export default class WatchlistContainer extends Component {
   state = {
@@ -45,6 +45,20 @@ export default class WatchlistContainer extends Component {
     );
   };
 
+  // deleteFromWatchlist = event => {
+  //   console.log(event.target.);
+  // fetch(API, {
+  //   method: "DELETE",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json"
+  //   },
+
+  // }
+  //   )
+  // }
+  // };
+
   useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
@@ -61,7 +75,6 @@ export default class WatchlistContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Watchlist</h1>
         <Grid item xs={12} md={6}>
           <Typography variant="h6">Watch List</Typography>
           <div>
@@ -74,15 +87,15 @@ export default class WatchlistContainer extends Component {
                     </Avatar>
                   </ListItemAvatar>
                   <ListItemText>{x.slice(0, 4)}</ListItemText>
-                  <ListItemSecondaryAction>
+                  {/* <ListItemSecondaryAction>
                     <IconButton
-                      onClick={() => console.log(x.slice(0, 4))}
+                      onClick={event => this.deleteFromWatchlist(event)}
                       edge="end"
                       aria-label="delete"
                     >
                       <DeleteIcon />
                     </IconButton>
-                  </ListItemSecondaryAction>
+                  </ListItemSecondaryAction> */}
                 </ListItem>
               ))}
             </List>

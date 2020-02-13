@@ -85,7 +85,7 @@ export default function NavTabs(props) {
           <LinkTab label="Coins" href="/drafts" {...a11yProps(0)} />
           <LinkTab label="Baskets" href="/trash" {...a11yProps(1)} />
           <LinkTab label="Create" href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Sign in" href="/singup" {...a11yProps(3)} />
+          <LinkTab label="Sign in" href="/signin" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

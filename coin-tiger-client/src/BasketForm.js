@@ -171,19 +171,18 @@ export default function BasketForm() {
       .then(resp => resp.json())
       .then(data => quantity2Conversion(data.market_data.current_price.usd));
 
-    if (currency3API !== "") {
-      const quantity3Conversion = price => {
-        const q = currency3Amount / price;
-        console.log(q);
-        console.log("---------------------STRING", currency1Q);
-        setCurrency3Q(q);
-      };
-      await fetch(
-        `https://api.coingecko.com/api/v3/coins/${currency3API}/history?date=${indexDate}&localization=false%20`
-      )
-        .then(resp => resp.json())
-        .then(data => quantity3Conversion(data.market_data.current_price.usd));
-    }
+    const quantity3Conversion = price => {
+      const q = currency3Amount / price;
+      console.log(q);
+
+      setCurrency3Q(q);
+    };
+
+    await fetch(
+      `https://api.coingecko.com/api/v3/coins/${currency3API}/history?date=${indexDate}&localization=false%20`
+    )
+      .then(resp => resp.json())
+      .then(data => quantity3Conversion(data.market_data.current_price.usd));
 
     const quantity4Conversion = price => {
       const q = currency4Amount / price;
@@ -201,6 +200,7 @@ export default function BasketForm() {
       console.log(q);
       setCurrency5Q(q);
     };
+
     await fetch(
       `https://api.coingecko.com/api/v3/coins/${currency5API}/history?date=${indexDate}&localization=false%20`
     )
@@ -210,6 +210,7 @@ export default function BasketForm() {
 
   const handleSubmit = async event => {
     event.preventDefault();
+
     await getQuantities(event);
 
     fetch(BasketsAPI, {
