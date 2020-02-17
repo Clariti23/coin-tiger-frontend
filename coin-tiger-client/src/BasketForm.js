@@ -162,50 +162,65 @@ export default function BasketForm() {
       .then(resp => resp.json())
       .then(data => quantity1Conversion(data.market_data.current_price.usd));
 
-    const quantity2Conversion = price => {
-      const q = currency2Amount / price;
-      console.log(q);
-      basket.coin_2_q = q;
-    };
+    if (currency2API !== "") {
+      const quantity2Conversion = price => {
+        const q = currency2Amount / price;
+        console.log(q);
+        basket.coin_2_q = q;
+      };
 
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency2API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity2Conversion(data.market_data.current_price.usd));
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency2API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity2Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_2_q = 0;
+    }
+    if (currency3API !== "") {
+      const quantity3Conversion = price => {
+        const q = currency3Amount / price;
+        console.log(q);
+        basket.coin_3_q = q;
+      };
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency3API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity3Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_3_q = 0;
+    }
 
-    const quantity3Conversion = price => {
-      const q = currency3Amount / price;
-      console.log(q);
-      basket.coin_3_q = q;
-    };
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency3API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity3Conversion(data.market_data.current_price.usd));
+    if (currency4API !== "") {
+      const quantity4Conversion = price => {
+        const q = currency4Amount / price;
+        console.log(q);
+        basket.coin_4_q = q;
+      };
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency4API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity4Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_4_q = 0;
+    }
 
-    const quantity4Conversion = price => {
-      const q = currency4Amount / price;
-      console.log(q);
-      basket.coin_4_q = q;
-    };
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency4API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity4Conversion(data.market_data.current_price.usd));
-
-    const quantity5Conversion = price => {
-      const q = currency5Amount / price;
-      console.log(q);
-      basket.coin_5_q = q;
-    };
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency5API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity5Conversion(data.market_data.current_price.usd));
+    if (currency4API !== "") {
+      const quantity5Conversion = price => {
+        const q = currency5Amount / price;
+        console.log(q);
+        basket.coin_5_q = q;
+      };
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency5API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity5Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_5_q = 0;
+    }
   };
 
   const handleSubmit = async event => {
