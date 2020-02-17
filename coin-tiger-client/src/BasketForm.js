@@ -25,36 +25,31 @@ export default function BasketForm() {
   const classes = useStyles();
   const [name, setName] = React.useState("");
   const [indexDate, setIndexDate] = React.useState("");
-  const [initialBasketValue, setInitialBasketValue] = React.useState("");
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
-  // const [currency1Q, setCurrency1Q] = React.useState(null);
+
   const currency1Q = 0;
   const [currency1Amount, setCurrency1Amount] = React.useState("");
 
   const [currency2, setCurrency2] = React.useState("");
   const [currency2API, setCurrency2API] = React.useState("");
   const [currency2Amount, setCurrency2Amount] = React.useState("");
-  // const [currency2Q, setCurrency2Q] = React.useState(null);
   const currency2Q = 0;
 
   const [currency3, setCurrency3] = React.useState("");
   const [currency3API, setCurrency3API] = React.useState("");
   const [currency3Amount, setCurrency3Amount] = React.useState("");
-  // const [currency3Q, setCurrency3Q] = React.useState(null);
   const currency3Q = 0;
 
   const [currency4, setCurrency4] = React.useState("");
   const [currency4API, setCurrency4API] = React.useState("");
   const [currency4Amount, setCurrency4Amount] = React.useState("");
-  // const [currency4Q, setCurrency4Q] = React.useState(null);
   const currency4Q = 0;
 
   const [currency5, setCurrency5] = React.useState("");
   const [currency5API, setCurrency5API] = React.useState("");
   const [currency5Amount, setCurrency5Amount] = React.useState("");
-  // const [currency5Q, setCurrency5Q] = React.useState(null);
   const currency5Q = 0;
 
   const [watchList, setWatchlist] = React.useState([]);
