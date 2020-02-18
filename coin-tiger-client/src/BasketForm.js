@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -28,9 +28,10 @@ export default function BasketForm() {
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
-
   const currency1Q = 0;
+  
   const [currency1Amount, setCurrency1Amount] = React.useState("");
+  const [currency1Q, setCurrency1Q] = React.useState(0);
 
   const [currency2, setCurrency2] = React.useState("");
   const [currency2API, setCurrency2API] = React.useState("");
@@ -82,7 +83,7 @@ export default function BasketForm() {
     fetch(FavoritesAPI)
       .then(res => res.json())
       .then(data => collectFavorites(data));
-  }, []);
+  });
 
   const collectFavorites = data => {
     let collected = [];
@@ -168,7 +169,7 @@ export default function BasketForm() {
         console.log(q);
         basket.coin_2_q = q;
       };
-
+      
       await fetch(
         `https://api.coingecko.com/api/v3/coins/${currency2API}/history?date=${indexDate}&localization=false%20`
       )
@@ -177,6 +178,7 @@ export default function BasketForm() {
     } else {
       basket.coin_2_q = 0;
     }
+    
     if (currency3API !== "") {
       const quantity3Conversion = price => {
         const q = currency3Amount / price;
@@ -191,6 +193,7 @@ export default function BasketForm() {
     } else {
       basket.coin_3_q = 0;
     }
+
 
     if (currency4API !== "") {
       const quantity4Conversion = price => {
@@ -207,7 +210,8 @@ export default function BasketForm() {
       basket.coin_4_q = 0;
     }
 
-    if (currency4API !== "") {
+
+    if (currency5API !== "") {
       const quantity5Conversion = price => {
         const q = currency5Amount / price;
         console.log(q);
@@ -240,7 +244,7 @@ export default function BasketForm() {
   };
 
   return (
-    <div>
+    <div className="box">
       <form
         className={classes.root}
         noValidate

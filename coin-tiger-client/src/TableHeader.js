@@ -29,7 +29,6 @@ export default function EnhancedTableHead(props) {
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
-            // align={headCell.numeric ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "default"}
           >
             {headCell.label}
