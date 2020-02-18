@@ -1,20 +1,34 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { flexbox } from "@material-ui/system";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const useStyles = makeStyles(theme => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
-      width: 200
+      width: 550
     }
   },
   root2: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: 200
+      width: 550
     }
+  },
+  paper: {
+    marginTop: theme.spacing(4),
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  form: {
+    width: "100%",
+    flexWrap: "wrap",
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -248,206 +262,220 @@ export default function BasketForm() {
       },
       body: JSON.stringify({ basket })
     }).then(console.log(basket));
-    // .then(response => console.log("post request sent", response.status));
   };
 
   return (
-    <div className="box">
-      <form
-        className={classes.root}
-        noValidate
-        autoComplete="off"
-        onSubmit={event => handleSubmit(event)}
-      >
-        <TextField
-          id="name"
-          label="Basket Name"
-          required
-          onChange={event => {
-            handleNameChange(event);
-          }}
-        />
-        <TextField
-          id="standard-helperText"
-          label="Starting date"
-          required
-          defaultValue=""
-          helperText="DD-MM-YYYY"
-          onChange={event => {
-            handleDateChange(event);
-          }}
-        />
-        <TextField
-          id="initial-basket-value"
-          label="Initial Basket Value"
-          defaultValue="$10,000"
-          InputProps={{
-            readOnly: true
-          }}
-        />
-        <TextField
-          id="amount1"
-          label="Amount 1"
-          variant="filled"
-          type="number"
-          onChange={event => {
-            handleAmountOne(event);
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <div className={classes.root2}>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <form
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={event => handleSubmit(event)}
+        >
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField
+                id="name"
+                label="Basket Name"
+                fullWidth
+                required
+                onChange={event => {
+                  handleNameChange(event);
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="standard-helperText"
+                label="Starting date"
+                fullWidth
+                required
+                defaultValue=""
+                helperText="DD-MM-YYYY"
+                onChange={event => {
+                  handleDateChange(event);
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="initial-basket-value"
+                label="Initial Basket Value"
+                fullWidth
+                defaultValue="$10,000"
+                InputProps={{
+                  readOnly: true
+                }}
+              />
+            </Grid>
+          </Grid>
           <TextField
-            id="component 1"
-            select
-            label={currency1}
-            value={currency1}
-            onChange={handleChange1}
-            SelectProps={{
-              native: true
+            id="amount1"
+            label="Amount 1"
+            variant="filled"
+            type="number"
+            onChange={event => {
+              handleAmountOne(event);
             }}
-            helperText="Please select your currency"
-          >
-            {watchList.map((option, index) => (
-              <option key={index} value={option}>
-                {option[0]}
-              </option>
-            ))}
-          </TextField>
-        </div>
-        <br></br>
-        <TextField
-          id="amount2"
-          label="Amount 2"
-          variant="filled"
-          type="number"
-          onChange={event => {
-            handleAmountTwo(event);
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <div className={classes.root2}>
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+
+          <div className={classes.root2}>
+            <TextField
+              id="component 1"
+              select
+              label={currency1}
+              value={currency1}
+              onChange={handleChange1}
+              SelectProps={{
+                native: true
+              }}
+              helperText="Please select your currency"
+            >
+              {watchList.map((option, index) => (
+                <option key={index} value={option}>
+                  {option[0]}
+                </option>
+              ))}
+            </TextField>
+          </div>
+          <br></br>
           <TextField
-            id="component 2"
-            select
-            label={currency2}
-            value={currency2}
-            onChange={handleChange2}
-            SelectProps={{
-              native: true
+            id="amount2"
+            label="Amount 2"
+            variant="filled"
+            type="number"
+            onChange={event => {
+              handleAmountTwo(event);
             }}
-            helperText="Please select your currency"
-          >
-            {watchList.map((option, index) => (
-              <option key={index} value={option}>
-                {option[0]}
-              </option>
-            ))}
-          </TextField>
-        </div>
-        <br></br>
-        <TextField
-          id="amount3"
-          label="Amount 3"
-          variant="filled"
-          type="number"
-          onChange={event => {
-            handleAmountThree(event);
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <div className={classes.root2}>
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <div className={classes.root2}>
+            <TextField
+              id="component 2"
+              select
+              label={currency2}
+              value={currency2}
+              onChange={handleChange2}
+              SelectProps={{
+                native: true
+              }}
+              helperText="Please select your currency"
+            >
+              {watchList.map((option, index) => (
+                <option key={index} value={option}>
+                  {option[0]}
+                </option>
+              ))}
+            </TextField>
+          </div>
+          <br></br>
           <TextField
-            id="component 3"
-            select
-            label={currency3}
-            value={currency3}
-            onChange={handleChange3}
-            SelectProps={{
-              native: true
+            id="amount3"
+            label="Amount 3"
+            variant="filled"
+            type="number"
+            onChange={event => {
+              handleAmountThree(event);
             }}
-            helperText="Please select your currency"
-          >
-            {watchList.map((option, index) => (
-              <option key={index} value={option}>
-                {option[0]}
-              </option>
-            ))}
-          </TextField>
-        </div>
-        <br></br>
-        <TextField
-          id="amount4"
-          label="Amount 4"
-          variant="filled"
-          type="number"
-          onChange={event => {
-            handleAmountFour(event);
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <div className={classes.root2}>
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <div className={classes.root2}>
+            <TextField
+              id="component 3"
+              select
+              label={currency3}
+              value={currency3}
+              onChange={handleChange3}
+              SelectProps={{
+                native: true
+              }}
+              helperText="Please select your currency"
+            >
+              {watchList.map((option, index) => (
+                <option key={index} value={option}>
+                  {option[0]}
+                </option>
+              ))}
+            </TextField>
+          </div>
+          <br></br>
           <TextField
-            id="component 4"
-            select
-            label={currency4}
-            value={currency4}
-            onChange={handleChange4}
-            SelectProps={{
-              native: true
+            id="amount4"
+            label="Amount 4"
+            variant="filled"
+            type="number"
+            onChange={event => {
+              handleAmountFour(event);
             }}
-            helperText="Please select your currency"
-          >
-            {watchList.map((option, index) => (
-              <option key={index} value={option}>
-                {option[0]}
-              </option>
-            ))}
-          </TextField>
-        </div>
-        <br></br>
-        <TextField
-          id="amount5"
-          label="Amount 5"
-          variant="filled"
-          type="number"
-          onChange={event => {
-            handleAmountFive(event);
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <div className={classes.root2}>
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <div className={classes.root2}>
+            <TextField
+              id="component 4"
+              select
+              label={currency4}
+              value={currency4}
+              onChange={handleChange4}
+              SelectProps={{
+                native: true
+              }}
+              helperText="Please select your currency"
+            >
+              {watchList.map((option, index) => (
+                <option key={index} value={option}>
+                  {option[0]}
+                </option>
+              ))}
+            </TextField>
+          </div>
+          <br></br>
           <TextField
-            id="component 5"
-            select
-            label={currency5}
-            value={currency5}
-            onChange={handleChange5}
-            SelectProps={{
-              native: true
+            id="amount5"
+            label="Amount 5"
+            variant="filled"
+            type="number"
+            onChange={event => {
+              handleAmountFive(event);
             }}
-            helperText="Please select your currency"
-          >
-            {watchList.map((option, index) => (
-              <option key={index} value={option}>
-                {option[0]}
-              </option>
-            ))}
-          </TextField>
-          <Button type="submit" color="primary" variant="contained">
-            CREATE BASKET
-          </Button>
-        </div>
-      </form>
-    </div>
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <div className={classes.root2}>
+            <TextField
+              id="component 5"
+              select
+              label={currency5}
+              value={currency5}
+              onChange={handleChange5}
+              SelectProps={{
+                native: true
+              }}
+              helperText="Please select your currency"
+            >
+              {watchList.map((option, index) => (
+                <option key={index} value={option}>
+                  {option[0]}
+                </option>
+              ))}
+            </TextField>
+            <Button type="submit" color="primary" variant="contained">
+              CREATE BASKET
+            </Button>
+          </div>
+        </form>
+      </div>
+    </Container>
   );
 }

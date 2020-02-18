@@ -82,9 +82,9 @@ export default function NavTabs(props) {
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <LinkTab label="Coins" href="/drafts" {...a11yProps(0)} />
-          <LinkTab label="Baskets" href="/trash" {...a11yProps(1)} />
-          <LinkTab label="Create" href="/spam" {...a11yProps(2)} />
+          <LinkTab label="Coins" href="/coins" {...a11yProps(0)} />
+          <LinkTab label="Baskets" href="/baskets" {...a11yProps(1)} />
+          <LinkTab label="Create" href="/create" {...a11yProps(2)} />
           <LinkTab label="Sign in" href="/signin" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
