@@ -30,10 +30,12 @@ export default class BasketContainer extends Component {
   render() {
     return (
       <div>
-        <Grid container="true" xs={6} md={6}>
-          <h2>My Baskets</h2>
+        <h2>My Baskets</h2>
+        <Grid container="true" display="flex" flexWrap="wrap" xs={12}>
           {this.state.baskets.map(basket => (
-            <Basket key={basket.id} basket={basket}></Basket>
+            <Grid item xs={12} sm={6}>
+              <Basket key={basket.id} basket={basket}></Basket>
+            </Grid>
           ))}
           <Link href="https://www.coingecko.com/en/api" underline="hover">
             Powered by CoinGecko API
