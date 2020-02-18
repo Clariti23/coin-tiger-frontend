@@ -260,7 +260,7 @@ export default function BasketForm() {
           label="Starting date"
           required
           defaultValue=""
-          helperText="Ex. 01-01-2020"
+          helperText="DD-MM-YYYY"
           onChange={event => {
             handleDateChange(event);
           }}
