@@ -21,6 +21,15 @@ const App = props => {
     }
   };
 
+  let handleLogout = () => {
+    setCurrentUser(null);
+    setCurrentUserId(null);
+    setLoggedIn(false);
+    localStorage.setItem("name", "");
+    localStorage.setItem("isLoggedIn", false);
+    localStorage.setItem("UID", null);
+  };
+
   return (
     <Router>
       <div>
@@ -28,6 +37,8 @@ const App = props => {
           handleUserSignup={handleUserSignup}
           currentUser={currentUser}
           currentUserId={currentUserId}
+          loggedIn={loggedIn}
+          handleLogout={handleLogout}
         />
       </div>
     </Router>

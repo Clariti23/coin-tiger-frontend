@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -25,44 +25,65 @@ export default function BasketForm() {
   const classes = useStyles();
   const [name, setName] = React.useState("");
   const [indexDate, setIndexDate] = React.useState("");
-  const [initialBasketValue, setInitialBasketValue] = React.useState("");
 
   const [currency1, setCurrency1] = React.useState("");
   const [currency1API, setCurrency1API] = React.useState("");
-  const [currency1Q, setCurrency1Q] = React.useState(0);
+  const currency1Q = 0;
+  
   const [currency1Amount, setCurrency1Amount] = React.useState("");
+  const [currency1Q, setCurrency1Q] = React.useState(0);
 
   const [currency2, setCurrency2] = React.useState("");
   const [currency2API, setCurrency2API] = React.useState("");
   const [currency2Amount, setCurrency2Amount] = React.useState("");
-  const [currency2Q, setCurrency2Q] = React.useState(0);
+  const currency2Q = 0;
 
   const [currency3, setCurrency3] = React.useState("");
   const [currency3API, setCurrency3API] = React.useState("");
   const [currency3Amount, setCurrency3Amount] = React.useState("");
-  const [currency3Q, setCurrency3Q] = React.useState(0);
+  const currency3Q = 0;
 
   const [currency4, setCurrency4] = React.useState("");
   const [currency4API, setCurrency4API] = React.useState("");
   const [currency4Amount, setCurrency4Amount] = React.useState("");
-  const [currency4Q, setCurrency4Q] = React.useState(0);
+  const currency4Q = 0;
 
   const [currency5, setCurrency5] = React.useState("");
   const [currency5API, setCurrency5API] = React.useState("");
   const [currency5Amount, setCurrency5Amount] = React.useState("");
-  const [currency5Q, setCurrency5Q] = React.useState(0);
+  const currency5Q = 0;
 
   const [watchList, setWatchlist] = React.useState([]);
 
   const FavoritesAPI = "http://localhost:3000/favorites";
   const BasketsAPI = "http://localhost:3000/baskets";
   const UID = localStorage.getItem("UID");
-
+  const basket = {
+    name: name,
+    initialBasketValue: 10000,
+    indexDate: indexDate,
+    coinOne: currency1,
+    coin_1_q: currency1Q,
+    coinOneId: currency1API,
+    coinTwo: currency2,
+    coin_2_q: currency2Q,
+    coinTwoId: currency2API,
+    coinThree: currency3,
+    coin_3_q: currency3Q,
+    coinThreeId: currency3API,
+    coinFour: currency4,
+    coin_4_q: currency4Q,
+    coinFourId: currency4API,
+    coinFive: currency5,
+    coin_5_q: currency5Q,
+    coinFiveId: currency5API,
+    user_id: UID
+  };
   useEffect(() => {
     fetch(FavoritesAPI)
       .then(res => res.json())
       .then(data => collectFavorites(data));
-  }, []);
+  });
 
   const collectFavorites = data => {
     let collected = [];
@@ -130,32 +151,11 @@ export default function BasketForm() {
     setCurrency5API(items[1]);
   };
 
-  const basket = {
-    name: name,
-    initialBasketValue: 10000,
-    indexDate: indexDate,
-    coinOne: currency1,
-    coin_1_q: currency1Q,
-    coinOneId: currency1API,
-    coinTwo: currency2,
-    coin_2_q: currency2Q,
-    coinTwoId: currency2API,
-    coinThree: currency3,
-    coin_3_q: currency3Q,
-    coinThreeId: currency3API,
-    coinFour: currency4,
-    coin_4_q: currency4Q,
-    coinFourId: currency4API,
-    coinFive: currency5,
-    coin_5_q: currency5Q,
-    coinFiveId: currency5API,
-    user_id: UID
-  };
-
   const getQuantities = async event => {
     const quantity1Conversion = price => {
-      const q = currency1Amount / price;
-      setCurrency1Q(q);
+      let q = currency1Amount / price;
+      console.log(q);
+      basket.coin_1_q = q;
     };
     await fetch(
       `https://api.coingecko.com/api/v3/coins/${currency1API}/history?date=${indexDate}&localization=false%20`
@@ -163,57 +163,73 @@ export default function BasketForm() {
       .then(resp => resp.json())
       .then(data => quantity1Conversion(data.market_data.current_price.usd));
 
-    const quantity2Conversion = price => {
-      const q = currency2Amount / price;
-      console.log(q);
-      setCurrency2Q(q);
-    };
-
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency2API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity2Conversion(data.market_data.current_price.usd));
-
+    if (currency2API !== "") {
+      const quantity2Conversion = price => {
+        const q = currency2Amount / price;
+        console.log(q);
+        basket.coin_2_q = q;
+      };
+      
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency2API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity2Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_2_q = 0;
+    }
+    
     if (currency3API !== "") {
       const quantity3Conversion = price => {
         const q = currency3Amount / price;
         console.log(q);
-        console.log("---------------------STRING", currency1Q);
-        setCurrency3Q(q);
+        basket.coin_3_q = q;
       };
       await fetch(
         `https://api.coingecko.com/api/v3/coins/${currency3API}/history?date=${indexDate}&localization=false%20`
       )
         .then(resp => resp.json())
         .then(data => quantity3Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_3_q = 0;
     }
 
-    const quantity4Conversion = price => {
-      const q = currency4Amount / price;
-      console.log(q);
-      setCurrency4Q(q);
-    };
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency4API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity4Conversion(data.market_data.current_price.usd));
 
-    const quantity5Conversion = price => {
-      const q = currency5Amount / price;
-      console.log(q);
-      setCurrency5Q(q);
-    };
-    await fetch(
-      `https://api.coingecko.com/api/v3/coins/${currency5API}/history?date=${indexDate}&localization=false%20`
-    )
-      .then(resp => resp.json())
-      .then(data => quantity5Conversion(data.market_data.current_price.usd));
+    if (currency4API !== "") {
+      const quantity4Conversion = price => {
+        const q = currency4Amount / price;
+        console.log(q);
+        basket.coin_4_q = q;
+      };
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency4API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity4Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_4_q = 0;
+    }
+
+
+    if (currency5API !== "") {
+      const quantity5Conversion = price => {
+        const q = currency5Amount / price;
+        console.log(q);
+        basket.coin_5_q = q;
+      };
+      await fetch(
+        `https://api.coingecko.com/api/v3/coins/${currency5API}/history?date=${indexDate}&localization=false%20`
+      )
+        .then(resp => resp.json())
+        .then(data => quantity5Conversion(data.market_data.current_price.usd));
+    } else {
+      basket.coin_5_q = 0;
+    }
   };
 
   const handleSubmit = async event => {
     event.preventDefault();
+
     await getQuantities(event);
 
     fetch(BasketsAPI, {
@@ -224,11 +240,11 @@ export default function BasketForm() {
       },
       body: JSON.stringify({ basket })
     }).then(console.log(basket));
-    // then(response => console.log("post request sent", response));
+    // .then(response => console.log("post request sent", response.status));
   };
 
   return (
-    <div>
+    <div className="box">
       <form
         className={classes.root}
         noValidate

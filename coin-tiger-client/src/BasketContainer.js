@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Basket from "./Basket";
+import CoinGeckoLogo from "./CoinGeckoLogo.png";
+import { Link } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 export default class BasketContainer extends Component {
   state = {
@@ -27,10 +30,21 @@ export default class BasketContainer extends Component {
   render() {
     return (
       <div>
-        <h2>My Baskets</h2>
-        {this.state.baskets.map(basket => (
-          <Basket key={basket.id} basket={basket}></Basket>
-        ))}
+        <Grid container="true" xs={6} md={6}>
+          <h2>My Baskets</h2>
+          {this.state.baskets.map(basket => (
+            <Basket key={basket.id} basket={basket}></Basket>
+          ))}
+          <Link href="https://www.coingecko.com/en/api" underline="hover">
+            Powered by CoinGecko API
+            <img
+              src={CoinGeckoLogo}
+              alt="CoinGecko logo"
+              width="25"
+              height="25"
+            ></img>
+          </Link>
+        </Grid>
       </div>
     );
   }

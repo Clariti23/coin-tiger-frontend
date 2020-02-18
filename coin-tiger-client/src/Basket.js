@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+// import Grid from "@material-ui/core/Grid";
 export default class Basket extends Component {
   coinOneId = this.props.basket.coinOneId;
   coinTwoId = this.props.basket.coinTwoId;
@@ -21,6 +25,12 @@ export default class Basket extends Component {
     coinFivePrice: 0,
     marketValue: 0
   };
+
+  classes = makeStyles({
+    card: {
+      minWidth: "50%"
+    }
+  });
 
   CoinGecko = require("coingecko-api");
   CoinGeckoClient = new this.CoinGecko();
@@ -109,31 +119,41 @@ export default class Basket extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          Basket Number: {this.props.basket.id}
-          <br></br>
-          Basket Name: {this.props.basket.name}
-          <br></br>
-          Basket Component 1: {this.props.basket.coinOne}
-          <br></br>
-          Basket Component 2: {this.props.basket.coinTwo}
-          <br></br>
-          Basket Component 3: {this.props.basket.coinThree}
-          <br></br>
-          Basket Component 4: {this.props.basket.coinFour}
-          <br></br>
-          Basket Component 5: {this.props.basket.coinFive}
-          <br></br>
-          Date of Basket Creation: {this.props.basket.indexDate}
-          <br></br>
-          Initial Value: {`$${this.props.basket.initialBasketValue}`}
-          <br></br>
-          Current Market Value: {`$${this.state.marketValue}`}
-          <br></br>
-          Performance to Date: {`${this.calculatePerformance()}%`}
-        </p>
-      </div>
+      <Card className={this.classes.card} variant="outlined">
+        <CardContent>
+          <Typography variant="h4" component="h4">
+            Basket Name: {this.props.basket.name}
+          </Typography>
+          <Typography variant="h5" component="h5">
+            Performance to Date: {`${this.calculatePerformance()}%`}
+          </Typography>
+          <Typography variant="p" component="p">
+            Date of Basket Creation: {this.props.basket.indexDate}
+          </Typography>
+          <Typography variant="p" component="p">
+            Current Market Value: {`$${this.state.marketValue}`}
+          </Typography>
+          <Typography variant="p" component="p">
+            Initial Value: {`$${this.props.basket.initialBasketValue}`}
+          </Typography>
+          <Typography variant="p" component="p">
+            Basket Component 1: {this.props.basket.coinOne}
+          </Typography>
+          <Typography variant="p" component="p">
+            Basket Component 2: {this.props.basket.coinTwo}
+          </Typography>
+          <Typography variant="p" component="p">
+            Basket Component 3: {this.props.basket.coinThree}
+          </Typography>
+          <Typography variant="p" component="p">
+            Basket Component 4: {this.props.basket.coinFour}
+          </Typography>
+          <Typography variant="p" component="p">
+            {" "}
+            Basket Component 5: {this.props.basket.coinFive}
+          </Typography>
+        </CardContent>
+      </Card>
     );
   }
 }
