@@ -181,8 +181,6 @@ export default function BasketForm() {
       await fetch(string)
         .then(resp => resp.json())
         .then(data => quantity2Conversion(data.market_data.current_price.usd));
-    } else {
-      basket.coin_2_q = 0;
     }
 
     if (currency3API !== "") {
@@ -200,8 +198,6 @@ export default function BasketForm() {
       await fetch(string)
         .then(resp => resp.json())
         .then(data => quantity3Conversion(data.market_data.current_price.usd));
-    } else {
-      basket.coin_3_q = 0;
     }
 
     if (currency4API !== "") {
@@ -219,8 +215,6 @@ export default function BasketForm() {
       await fetch(string)
         .then(resp => resp.json())
         .then(data => quantity4Conversion(data.market_data.current_price.usd));
-    } else {
-      basket.coin_4_q = 0;
     }
 
     if (currency5API !== "") {
@@ -238,8 +232,6 @@ export default function BasketForm() {
       await fetch(string)
         .then(resp => resp.json())
         .then(data => quantity5Conversion(data.market_data.current_price.usd));
-    } else {
-      basket.coin_5_q = 0;
     }
   };
 
