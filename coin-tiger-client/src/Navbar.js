@@ -7,7 +7,6 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
-import Signup from "./Signup";
 import Signin from "./Signin";
 import WatchlistContainer from "./WatchlistContainer";
 import BasketContainer from "./BasketContainer";
@@ -108,11 +107,9 @@ export default function NavTabs(props) {
 
       <div>
         <TabPanel value={value} index={3}>
-          {/* <Signup handleUserSignup={props.handleUserSignup}>sign up</Signup> */}
           <Signin handleUserSignup={props.handleUserSignup}></Signin>
         </TabPanel>
       </div>
     </div>
   );
 }
-//if the user logged in is true, then show the Log
