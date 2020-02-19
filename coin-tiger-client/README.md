@@ -1,8 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##Motivation
 
-CoinTiger is a project I built as part of my passion to learn more about Bitcoin, Ethereum and cryptocurrency markets. 
+## About
+
+CoinTiger is a project I built as part of my passion to learn more about Bitcoin, Ethereum and cryptocurrency markets. This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 CoinTiger is an investment management tool for building baskets of cryptoassets and gaining the capability to view how these baskets perform over time. This tool is ideally suited for a thesis-driven investor who wants to be able to compare how different investment theses play out with objective metrics. 
 
