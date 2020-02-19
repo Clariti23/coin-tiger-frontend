@@ -8,11 +8,12 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
-import CoinGeckoLogo from "./CoinGeckoLogo.png";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
-import { Link } from "@material-ui/core";
 import TableHeader from "./TableHeader";
+import CoinGeckoBrand from "./CoinGeckoBrand";
+import Copyright from "./Copyright";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -148,15 +149,10 @@ export default function EnhancedTable(props) {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-      <Link href="https://www.coingecko.com/en/api" underline="hover">
-        Powered by CoinGecko API
-        <img
-          src={CoinGeckoLogo}
-          alt="CoinGecko logo"
-          width="25"
-          height="25"
-        ></img>
-      </Link>
+      <Box mt={8}>
+        <CoinGeckoBrand />
+        <Copyright />
+      </Box>
     </div>
   );
 }

@@ -3,24 +3,12 @@ import { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        CoinTiger
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import CoinGeckoBrand from "./CoinGeckoBrand";
+import Copyright from "./Copyright";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -128,18 +116,19 @@ export default function SignIn(props) {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item>
+          {/* <Grid container>
+            {/* <Grid item>
               <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
-            </Grid>
-          </Grid>
+            </Grid> 
+            </Grid>*/}
         </form>
       </div>
-      {/* <Box mt={8}>
+      <Box mt={8}>
+        <CoinGeckoBrand />
         <Copyright />
-      </Box> */}
+      </Box>
     </Container>
   );
 }

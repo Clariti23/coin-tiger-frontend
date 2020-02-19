@@ -8,11 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
 import Signin from "./Signin";
-import WatchlistContainer from "./WatchlistContainer";
-import BasketContainer from "./BasketContainer";
 import BasketForm from "./BasketForm";
-import Style from "./App.css";
-
+import Tooltip from "@material-ui/core/Tooltip";
+import BasketPage from "./BasketPage";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -70,9 +68,6 @@ export default function NavTabs(props) {
     setValue(newValue);
   };
 
-  // const handleLogout = () => {
-  //   props.handleLogout();
-  // };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -92,18 +87,17 @@ export default function NavTabs(props) {
         <CoinTable currentUserId={props.currentUserId}> </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="box">
-          <WatchlistContainer
-            currentUserId={props.currentUserId}
-          ></WatchlistContainer>
-          <BasketContainer></BasketContainer>
-        </div>
+        <BasketPage currentUserId={props.currentUserId}></BasketPage>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Allocate $10,000 across up to five currencies from your watchlist to
-        build a basket. Then click create. Boom!
-        <BasketForm></BasketForm>
-      </TabPanel>
+      <Tooltip title="Allocate $10k across 5 currencies" arrow>
+        <TabPanel value={value} index={2}>
+          <div>
+            Allocate $10,000 across up to five currencies from your watchlist to
+            build a basket. Then click create. Boom!
+            <BasketForm></BasketForm>
+          </div>
+        </TabPanel>
+      </Tooltip>
 
       <div>
         <TabPanel value={value} index={3}>

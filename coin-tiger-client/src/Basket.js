@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-// import Grid from "@material-ui/core/Grid";
+
 export default class Basket extends Component {
   coinOneId = this.props.basket.coinOneId;
   coinTwoId = this.props.basket.coinTwoId;
@@ -121,8 +121,8 @@ export default class Basket extends Component {
     return (
       <Card className={this.classes.card} variant="outlined">
         <CardContent>
-          <Typography variant="h4" component="h4">
-            Basket Name: {this.props.basket.name}
+          <Typography variant="h5" component="h5">
+            Basket: {this.props.basket.name}
           </Typography>
           <Typography variant="h5" component="h5">
             Performance to Date: {`${this.calculatePerformance()}%`}
