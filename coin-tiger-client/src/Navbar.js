@@ -9,7 +9,6 @@ import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
 import Signin from "./Signin";
 import BasketForm from "./BasketForm";
-import Tooltip from "@material-ui/core/Tooltip";
 import BasketPage from "./BasketPage";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -89,21 +88,16 @@ export default function NavTabs(props) {
       <TabPanel value={value} index={1}>
         <BasketPage currentUserId={props.currentUserId}></BasketPage>
       </TabPanel>
-      <Tooltip title="Allocate $10k across 5 currencies" arrow>
-        <TabPanel value={value} index={2}>
-          <div>
-            Allocate $10,000 across up to five currencies from your watchlist to
-            build a basket. Then click create. Boom!
-            <BasketForm></BasketForm>
-          </div>
-        </TabPanel>
-      </Tooltip>
-
-      <div>
-        <TabPanel value={value} index={3}>
+      <TabPanel value={value} index={2}>
+        <div>
+          <BasketForm></BasketForm>
+        </div>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <div>
           <Signin handleUserSignup={props.handleUserSignup}></Signin>
-        </TabPanel>
-      </div>
+        </div>
+      </TabPanel>
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default class BasketContainer extends Component {
     return (
       <div>
         <div>
-          <h2>My Baskets</h2>
+          <h4>My Baskets</h4>
           <Grid container="true" display="flex" flexWrap="wrap" xs={12}>
             {this.state.baskets.map(basket => (
               <Grid item xs={12} sm={6}>
