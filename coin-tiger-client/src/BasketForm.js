@@ -6,6 +6,9 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import CoinGeckoBrand from "./CoinGeckoBrand";
+import Copyright from "./Copyright";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -476,6 +479,10 @@ export default function BasketForm() {
           </div>
         </form>
       </div>
+      <Box mt={8}>
+        <CoinGeckoBrand />
+        <Copyright />
+      </Box>
     </Container>
   );
 }

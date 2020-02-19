@@ -63,7 +63,7 @@ export default class WatchlistContainer extends Component {
   useStyles = makeStyles(theme => ({
     root: {
       // flexGrow: 1,
-      maxWidth: 752
+      maxWidth: "33%"
     },
     demo: {
       backgroundColor: theme.palette.background.paper
@@ -75,10 +75,10 @@ export default class WatchlistContainer extends Component {
 
   render() {
     return (
-      <div>
-        <Grid container md={6}>
+      <div display="flex">
+        <Grid container xs={4}>
           <Typography variant="h5">My Watch List</Typography>
-          <div style={{ display: "flex" }}>
+          <div>
             <List>
               {this.state.watchList.map((x, index) => (
                 <ListItem key={index}>
