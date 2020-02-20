@@ -12,8 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "cd client && npm install && npm run build && cd ..",
-    "deploy": "cp -a client/build/. public/",
+    "build": "cd coin-tiger-client && npm install && npm run build && cd ..",
+    "deploy": "cp -a coin-tiger-client/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "repository": {
