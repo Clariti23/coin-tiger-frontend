@@ -1,0 +1,26 @@
+{
+  "name": "coin-tiger",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Clariti23/coin-tiger-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Clariti23/coin-tiger-frontend/issues"
+  },
+  "homepage": "https://github.com/Clariti23/coin-tiger-frontend#readme"
+}
