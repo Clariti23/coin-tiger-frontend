@@ -23,7 +23,12 @@ export default class Basket extends Component {
     coinThreePrice: 0,
     coinFourPrice: 0,
     coinFivePrice: 0,
-    marketValue: 0
+    marketValue: 0,
+    val1: 0,
+    val2: 0,
+    val3: 0,
+    val4: 0,
+    val5: 0
   };
 
   classes = makeStyles({
@@ -100,7 +105,12 @@ export default class Basket extends Component {
     }
     this.setState(
       {
-        marketValue: currentBasketValue
+        marketValue: currentBasketValue,
+        val1: valueOne,
+        val2: valueTwo,
+        val3: valueThree,
+        val4: valueFour,
+        val5: valueFive
       },
       () => console.log(this.state)
     );
@@ -137,20 +147,25 @@ export default class Basket extends Component {
             Initial Value: {`$${this.props.basket.initialBasketValue}`}
           </Typography>
           <Typography variant="p" component="p">
-            Basket Component 1: {this.props.basket.coinOne}
+            Basket Component 1: {this.props.basket.coinOne}{" "}
+            {` || $${this.state.val1}`}
           </Typography>
           <Typography variant="p" component="p">
             Basket Component 2: {this.props.basket.coinTwo}
+            {` || $${this.state.val2}`}
           </Typography>
           <Typography variant="p" component="p">
             Basket Component 3: {this.props.basket.coinThree}
+            {` || $${this.state.val3}`}
           </Typography>
           <Typography variant="p" component="p">
             Basket Component 4: {this.props.basket.coinFour}
+            {` || $${this.state.val4}`}
           </Typography>
           <Typography variant="p" component="p">
             {" "}
             Basket Component 5: {this.props.basket.coinFive}
+            {` || $${this.state.val5}`}
           </Typography>
         </CardContent>
       </Card>
