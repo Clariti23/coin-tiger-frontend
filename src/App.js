@@ -7,7 +7,7 @@ const App = props => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  let handleUserSignup = user => {
+  let handleUserLogIn = user => {
     if (user.jwt) {
       let userID = user.user.user.id;
       setCurrentUser(user.user.user.name);
@@ -34,7 +34,7 @@ const App = props => {
     <Router>
       <div>
         <NavBar
-          handleUserSignup={handleUserSignup}
+          handleUserLogIn={handleUserLogIn}
           currentUser={currentUser}
           currentUserId={currentUserId}
           loggedIn={loggedIn}
