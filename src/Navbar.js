@@ -11,6 +11,10 @@ import Signin from "./Signin";
 import BasketForm from "./BasketForm";
 import BasketPage from "./BasketPage";
 import Signup from "./Signup";
+<<<<<<< HEAD
+=======
+
+>>>>>>> a757b21a367533eb2a3f10d5902e8158a25160bb
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 

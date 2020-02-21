@@ -7,7 +7,7 @@ export default class BasketContainer extends Component {
     baskets: [],
     UID: null
   };
-  BASKET_API = "http://localhost:3000/baskets";
+  BASKET_API = "https://cointiger-backend.herokuapp.com/baskets";
 
   componentDidMount() {
     const UID = localStorage.getItem("UID");
