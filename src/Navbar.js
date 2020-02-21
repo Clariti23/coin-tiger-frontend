@@ -10,6 +10,7 @@ import CoinTable from "./CoinTable";
 import Signin from "./Signin";
 import BasketForm from "./BasketForm";
 import BasketPage from "./BasketPage";
+import Signup from "./Signup";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -96,6 +97,7 @@ export default function NavTabs(props) {
       <TabPanel value={value} index={3}>
         <div>
           <Signin handleUserSignup={props.handleUserSignup}></Signin>
+          <Signup handleUserSignup={props.handleUserSignup}></Signup>
         </div>
       </TabPanel>
     </div>
