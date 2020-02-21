@@ -20,7 +20,7 @@ export default class WatchlistContainer extends Component {
     UID: null
   };
 
-  favoritesAPI = "http://localhost:3000/favorites";
+  favoritesAPI = "https://cointiger-backend.herokuapp.com/favorites";
 
   componentDidMount() {
     const name = localStorage.getItem("name");
