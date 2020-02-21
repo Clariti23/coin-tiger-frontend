@@ -39,7 +39,7 @@ export default function SignIn(props) {
     setPassword(event.target.value);
   };
 
-  const API = "http://localhost:3000/login";
+  const API = "https://cointiger-backend.herokuapp.com/login";
 
   let handleSubmit = event => {
     event.preventDefault();

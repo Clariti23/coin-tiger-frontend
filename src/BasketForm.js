@@ -79,8 +79,8 @@ export default function BasketForm() {
 
   // API STRINGS
   //CHANGE THESE SERVER ENDPOINTS @ DEPLOYMENT
-  const FavoritesAPI = "http://localhost:3000/favorites";
-  const BasketsAPI = "http://localhost:3000/baskets";
+  const FavoritesAPI = "https://cointiger-backend.herokuapp.com/favorites";
+  const BasketsAPI = "https://cointiger-backend.herokuapp.com/baskets";
 
   const UID = localStorage.getItem("UID");
   const basket = {
