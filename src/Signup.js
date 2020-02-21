@@ -55,12 +55,12 @@ export default function Signup(props) {
       body: JSON.stringify({ user })
     })
       .then(res => res.json())
-      .then(data => props.handleLogin(data));
+      .then(data => console.log(data));
     alert(
       `Welcome to Coin Tiger, ${name}! Now that you've made an account, feel free to add coins to your watchlist, or monitor a portfolio by creating a basket!`
     );
   };
-
+  //props.handleLogIn(data)
   let handleNameChange = event => {
     setName(event.target.value);
   };
