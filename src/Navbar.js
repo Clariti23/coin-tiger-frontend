@@ -98,7 +98,7 @@ export default function NavTabs(props) {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div>
-          <UsersPage handleLogIn={props.handleLogIn}></UsersPage>
+          <UsersPage handleUserLogIn={props.handleUserLogIn}></UsersPage>
         </div>
       </TabPanel>
     </div>

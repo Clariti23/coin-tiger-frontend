@@ -5,8 +5,8 @@ import Signup from "./Signup";
 export default function UsersPage(props) {
   return (
     <div>
-      <Signin handleLogIn={props.handleLogIn}></Signin>
-      <Signup handleLogIn={props.handleLogIn}></Signup>
+      <Signin handleUserLogIn={props.handleUserLogIn}></Signin>
+      <Signup handleUserLogIn={props.handleUserLogIn}></Signup>
     </div>
   );
 }

@@ -59,8 +59,8 @@ export default function SignIn(props) {
       body: JSON.stringify({ user })
     })
       .then(res => res.json())
-      .then(data => console.log(data));
-    //props.handleLogIn(data)
+      .then(data => props.handleUserLogIn(data));
+
     alert(`Welcome back to CoinTiger, ${email}!`);
   };
 
