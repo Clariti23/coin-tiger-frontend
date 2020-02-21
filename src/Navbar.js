@@ -7,10 +7,10 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
-import Signin from "./Signin";
+// import Signin from "./Signin";
 import BasketForm from "./BasketForm";
 import BasketPage from "./BasketPage";
-import Signup from "./Signup";
+// import Signup from "./Signup";
 import UsersPage from "./UsersPage";
 
 function TabPanel(props) {
