@@ -58,7 +58,7 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
 
-  const FAVORITE_API = "https://cointiger-backend.herokuapp.com/favorites";
+  const FAVORITE_API = "https://gentle-wildwood-07928.herokuapp.com/favorites";
 
   const handleAddToWatchList = event => {
     let coin_gecko_id = event.target.id;
