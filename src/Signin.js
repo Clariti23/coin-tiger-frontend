@@ -39,7 +39,7 @@ export default function SignIn(props) {
     setPassword(event.target.value);
   };
 
-  const API = "https://cointiger-backend.herokuapp.com/login";
+  const API = "https://gentle-wildwood-07928.herokuapp.com/login";
 
   let handleSubmit = event => {
     event.preventDefault();
