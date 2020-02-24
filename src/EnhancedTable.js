@@ -57,33 +57,40 @@ export default function EnhancedTable(props) {
   const handleChangeDense = event => {
     setDense(event.target.checked);
   };
-
-  const FAVORITE_API = "https://gentle-wildwood-07928.herokuapp.com/favorites";
+  //API STRINGS
+  // const LOCAL_TEST_API = "http://localhost:3000";
+  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  const FAVORITE_API = PRODUCTION_API + "/favorites";
 
   const handleAddToWatchList = event => {
     let coin_gecko_id = event.target.id;
 
-    if (localStorage.name !== "") {
-      fetch(FAVORITE_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
-        body: JSON.stringify({
-          favorite: {
-            symbol: event.target.value,
-            user_id: props.currentUserId,
-            coin_gecko_id: coin_gecko_id
-          }
+    console.log(props.loggedIn);
+    props.loggedIn
+      ? fetch(FAVORITE_API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*"
+          },
+          body: JSON.stringify({
+            favorite: {
+              symbol: event.target.value,
+              user_id: props.currentUserId,
+              coin_gecko_id: coin_gecko_id
+            }
+          })
         })
-      })
-        .then(response => console.log(response, "fetch post hit"))
-        .then(alert(`${event.target.value} was added to your watchlist`));
-    } else {
-      alert("Please sign in to add a digital asset to your watch list");
-    }
+          .then(response => console.log(response.status))
+          .then(
+            alert(
+              `${event.target.value} was successfully added to your watchlist. You can view your basket or remove digital assets from your watchlist under Basket.`
+            )
+          )
+      : alert(
+          "This digital asset was not added to your watchlist. Please sign in to add a digital asset to your watchlist."
+        );
   };
 
   return (
@@ -127,7 +134,9 @@ export default function EnhancedTable(props) {
                       </TableCell>
                       <TableCell>{row[1]}</TableCell>
                       <TableCell>{"$" + row[2]}</TableCell>
-                      <TableCell>{row[3] + "%"}</TableCell>
+                      <TableCell>
+                        {row[3].toString().slice(0, 4) + "%"}
+                      </TableCell>
                       <TableCell>{"$" + row[4]}</TableCell>
                     </TableRow>
                   );

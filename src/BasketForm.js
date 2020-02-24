@@ -78,9 +78,10 @@ export default function BasketForm() {
   const [watchList, setWatchlist] = React.useState([]);
 
   // API STRINGS
-  //CHANGE THESE SERVER ENDPOINTS @ DEPLOYMENT
-  const FavoritesAPI = "https://gentle-wildwood-07928.herokuapp.com/favorites";
-  const BasketsAPI = "https://gentle-wildwood-07928.herokuapp.com/baskets";
+  // const LOCAL_TEST_API = "http://localhost:3000";
+  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  const FavoritesAPI = PRODUCTION_API + "/favorites";
+  const BasketsAPI = PRODUCTION_API + "/baskets";
 
   const UID = localStorage.getItem("UID");
   const basket = {
@@ -104,6 +105,7 @@ export default function BasketForm() {
     coinFiveId: currency5API,
     user_id: UID
   };
+
   useEffect(() => {
     fetch(FavoritesAPI)
       .then(res => res.json())
@@ -177,20 +179,22 @@ export default function BasketForm() {
   };
 
   const getQuantities = async event => {
-    const quantity1Conversion = price => {
-      let q = currency1Amount / price;
-      // console.log(q);
-      basket.coin_1_q = q;
-    };
-    let string =
-      "https://api.coingecko.com/api/v3/coins/" +
-      currency1API +
-      "/history?date=" +
-      indexDate +
-      "&localization=false";
-    await fetch(string)
-      .then(resp => resp.json())
-      .then(data => quantity1Conversion(data.market_data.current_price.usd));
+    if (currency1API !== "") {
+      const quantity1Conversion = price => {
+        let q = currency1Amount / price;
+        // console.log(q);
+        basket.coin_1_q = q;
+      };
+      let string =
+        "https://api.coingecko.com/api/v3/coins/" +
+        currency1API +
+        "/history?date=" +
+        indexDate +
+        "&localization=false";
+      await fetch(string)
+        .then(resp => resp.json())
+        .then(data => quantity1Conversion(data.market_data.current_price.usd));
+    }
 
     if (currency2API !== "") {
       const quantity2Conversion = price => {
@@ -343,13 +347,13 @@ export default function BasketForm() {
               <TextField
                 id="component 1"
                 select
-                label={currency1}
-                value={currency1}
+                // label={currency1}
+                // value={currency1}
                 onChange={handleChange1}
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select your currency"
+                helperText="Please select a digital asset"
               >
                 {watchList.map((option, index) => (
                   <option key={index} value={option}>
@@ -380,7 +384,7 @@ export default function BasketForm() {
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select your currency"
+                helperText="Please select a digital asset"
               >
                 {watchList.map((option, index) => (
                   <option key={index} value={option}>
@@ -412,7 +416,7 @@ export default function BasketForm() {
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select your currency"
+                helperText="Please select a digital asset"
               >
                 {watchList.map((option, index) => (
                   <option key={index} value={option}>
@@ -444,7 +448,7 @@ export default function BasketForm() {
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select your currency"
+                helperText="Please select a digital asset"
               >
                 {watchList.map((option, index) => (
                   <option key={index} value={option}>
@@ -476,7 +480,7 @@ export default function BasketForm() {
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select your currency"
+                helperText="Please select a digital asset"
               >
                 {watchList.map((option, index) => (
                   <option key={index} value={option}>

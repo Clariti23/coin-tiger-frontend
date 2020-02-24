@@ -38,9 +38,10 @@ export default function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const classes = useStyles();
-
-  const API = "https://gentle-wildwood-07928.herokuapp.com/users";
-  //
+  //API STRINGS
+  // const LOCAL_TEST_API = "http://localhost:3000";
+  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com":
+  const API = PRODUCTION_API + "/users";
 
   let handleSubmit = event => {
     event.preventDefault();

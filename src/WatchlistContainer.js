@@ -19,8 +19,10 @@ export default class WatchlistContainer extends Component {
     name: "",
     UID: null
   };
-
-  favoritesAPI = "https://gentle-wildwood-07928.herokuapp.com/favorites";
+  //API STRINGS
+  //LOCAL_TEST_API = "http://localhost:3000";
+  PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  FavoritesAPI = this.PRODUCTION_API + "/favorites";
 
   componentDidMount() {
     const name = localStorage.getItem("name");
@@ -31,7 +33,7 @@ export default class WatchlistContainer extends Component {
   }
 
   fetchFavorites = () => {
-    fetch(this.favoritesAPI)
+    fetch(this.FavoritesAPI)
       .then(res => res.json())
       .then(data => this.filterFavorites(data));
   };
@@ -54,7 +56,7 @@ export default class WatchlistContainer extends Component {
     e.persist();
     console.log(e);
     const FavoriteId = id;
-    fetch(this.favoritesAPI, {
+    fetch(this.FavoritesAPI, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

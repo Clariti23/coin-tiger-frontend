@@ -7,7 +7,7 @@ import Copyright from "./Copyright";
 import Box from "@material-ui/core/Box";
 
 export default function BasketPage(props) {
-  return (
+  return props.loggedIn === true ? (
     <div id="basketpageDiv" display="flex" flexWrap="wrap">
       <Grid container="true" display="flex" flexWrap="wrap" xs={12}>
         <Grid item xs={3}>
@@ -20,6 +20,14 @@ export default function BasketPage(props) {
           <BasketContainer></BasketContainer>
         </Grid>
       </Grid>
+      <Box mt={8}>
+        <CoinGeckoBrand />
+        <Copyright />
+      </Box>
+    </div>
+  ) : (
+    <div>
+      <h2>You must be logged in to view your watchlist and baskets</h2>
       <Box mt={8}>
         <CoinGeckoBrand />
         <Copyright />

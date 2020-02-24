@@ -7,7 +7,7 @@ const App = props => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  let handleUserLogIn = user => {
+  const handleUserLogIn = user => {
     if (user.jwt) {
       let userID = user.user.user.id;
       setCurrentUser(user.user.user.name);
@@ -16,16 +16,17 @@ const App = props => {
       localStorage.setItem("name", user.user.user.name);
       localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("UID", userID);
+      localStorage.setItem("JWT", user.jwt);
     } else {
       alert("Invalid username or password");
     }
   };
 
-  let handleLogout = () => {
+  const handleUserLogOut = () => {
     setCurrentUser(null);
     setCurrentUserId(null);
     setLoggedIn(false);
-    localStorage.setItem("name", "");
+    localStorage.setItem("name", null);
     localStorage.setItem("isLoggedIn", false);
     localStorage.setItem("UID", null);
   };
@@ -35,10 +36,10 @@ const App = props => {
       <div>
         <NavBar
           handleUserLogIn={handleUserLogIn}
+          handleUserLogOut={handleUserLogOut}
           currentUser={currentUser}
           currentUserId={currentUserId}
           loggedIn={loggedIn}
-          handleLogout={handleLogout}
         />
       </div>
     </Router>
