@@ -42,6 +42,7 @@ export default class CoinTable extends Component {
       <div>
         <EnhancedTable
           rows={this.state.rows}
+          loggedIn={this.props.loggedIn}
           currentUserId={this.props.currentUserId}
         ></EnhancedTable>
       </div>

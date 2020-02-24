@@ -7,13 +7,16 @@ export default class BasketContainer extends Component {
     baskets: [],
     UID: null
   };
-  BASKET_API = "https://gentle-wildwood-07928.herokuapp.com/baskets";
+  //API STRINGS
+  // LOCAL_TEST_API = "http://localhost:3000";
+  PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  API = this.PRODUCTION_API + "/baskets";
 
   componentDidMount() {
     const UID = localStorage.getItem("UID");
     this.setState({ UID });
 
-    fetch(this.BASKET_API)
+    fetch(this.API)
       .then(response => response.json())
       .then(data => this.basketsFilter(data));
   }

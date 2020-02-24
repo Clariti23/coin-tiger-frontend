@@ -8,10 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import CoinTable from "./CoinTable";
 // import Signin from "./Signin";
-import BasketForm from "./BasketForm";
+//import BasketForm from "./BasketForm";
 import BasketPage from "./BasketPage";
 // import Signup from "./Signup";
 import UsersPage from "./UsersPage";
+import CreatePage from "./CreatePage";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -86,19 +87,31 @@ export default function NavTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <CoinTable currentUserId={props.currentUserId}> </CoinTable>
+        <CoinTable
+          loggedIn={props.loggedIn}
+          currentUserId={props.currentUserId}
+        >
+          {" "}
+        </CoinTable>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <BasketPage currentUserId={props.currentUserId}></BasketPage>
+        <BasketPage
+          loggedIn={props.loggedIn}
+          currentUserId={props.currentUserId}
+        ></BasketPage>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div>
-          <BasketForm></BasketForm>
+          <CreatePage loggedIn={props.loggedIn}></CreatePage>
         </div>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div>
-          <UsersPage handleUserLogIn={props.handleUserLogIn}></UsersPage>
+          <UsersPage
+            loggedIn={props.loggedIn}
+            handleUserLogIn={props.handleUserLogIn}
+            handleUserLogOut={props.handleUserLogOut}
+          ></UsersPage>
         </div>
       </TabPanel>
     </div>

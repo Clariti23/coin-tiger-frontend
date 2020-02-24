@@ -38,8 +38,10 @@ export default function SignIn(props) {
   let handlePasswordChange = event => {
     setPassword(event.target.value);
   };
-
-  const API = "https://gentle-wildwood-07928.herokuapp.com/login";
+  //API STRINGS
+  // const LOCAL_TEST_API = "http://localhost:3000";
+  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  const API = PRODUCTION_API + "/login";
 
   let handleSubmit = event => {
     event.preventDefault();
@@ -60,8 +62,6 @@ export default function SignIn(props) {
     })
       .then(res => res.json())
       .then(data => props.handleUserLogIn(data));
-
-    alert(`Welcome back to CoinTiger, ${email}!`);
   };
 
   return (
@@ -113,13 +113,6 @@ export default function SignIn(props) {
           >
             Sign In
           </Button>
-          {/* <Grid container>
-            {/* <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid> 
-            </Grid>*/}
         </form>
       </div>
       <Box mt={8}>
