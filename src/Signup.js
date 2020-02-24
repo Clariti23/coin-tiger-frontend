@@ -40,7 +40,7 @@ export default function Signup(props) {
   const classes = useStyles();
   //API STRINGS
   // const LOCAL_TEST_API = "http://localhost:3000";
-  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com":
+  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   const API = PRODUCTION_API + "/users";
 
   let handleSubmit = event => {
