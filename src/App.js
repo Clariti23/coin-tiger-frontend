@@ -16,7 +16,7 @@ const App = props => {
       localStorage.setItem("name", user.user.user.name);
       localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("UID", userID);
-      localStorage.setItem("JWT", user.jwt);
+      // localStorage.setItem("JWT", user.jwt);
     } else {
       alert("Invalid username or password");
     }

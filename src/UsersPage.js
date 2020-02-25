@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import Signin from "./Signin";
-import Signup from "./Signup";
+// import DummyLogin from "./DummyLogin";
+// import Signup from "./Signup";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 export default function UsersPage(props) {
   console.log(props.loggedIn);
@@ -10,30 +13,23 @@ export default function UsersPage(props) {
     props.handleUserLogOut();
   };
 
-  return (
+  return props.loggedIn === true ? (
+    <div display="flex" justify-content="center" align="center">
+      <Box mt="8">
+        <Typography variant="body1" align="center">
+          {
+            "You are now logged in! You can add coins to your watchlist, view your baskets, or create a new basket."
+          }
+        </Typography>
+
+        <Button variant="contained" color="secondary" onClick={handleClick}>
+          Sign Out{" "}
+        </Button>
+      </Box>
+    </div>
+  ) : (
     <div>
-      {localStorage.getItem("JWT").length > 1 ? (
-        props.loggedIn === true ? (
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleClick}
-            display="flex"
-            justify-content="center"
-            align-items="center"
-          >
-            Sign Out{" "}
-          </Button>
-        ) : (
-          <div>
-            <Signin handleUserLogIn={props.handleUserLogIn}></Signin>
-          </div>
-        )
-      ) : (
-        <div>
-          <Signup handleUserLogIn={props.handleUserLogIn}></Signup>
-        </div>
-      )}
+      <Signin handleUserLogIn={props.handleUserLogIn}></Signin>
     </div>
   );
 }
