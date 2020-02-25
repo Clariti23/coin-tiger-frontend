@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 import CoinGeckoBrand from "./CoinGeckoBrand";
 import Copyright from "./Copyright";
 import Box from "@material-ui/core/Box";
-
+import DummyLogin from "./DummyLogin";
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -115,6 +115,8 @@ export default function SignIn(props) {
           </Button>
         </form>
       </div>
+      <DummyLogin></DummyLogin>
+
       <Box mt={8}>
         <CoinGeckoBrand />
         <Copyright />
