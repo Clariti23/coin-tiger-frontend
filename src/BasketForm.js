@@ -77,7 +77,7 @@ export default function BasketForm() {
 
   const [watchList, setWatchlist] = React.useState([]);
 
-  // API STRINGS
+  //API STRINGS
   // const LOCAL_TEST_API = "http://localhost:3000";
   const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   const FavoritesAPI = PRODUCTION_API + "/favorites";
@@ -378,8 +378,8 @@ export default function BasketForm() {
               <TextField
                 id="component 2"
                 select
-                label={currency2}
-                value={currency2}
+                // label={currency2}
+                // value={currency2}
                 onChange={handleChange2}
                 SelectProps={{
                   native: true
@@ -410,8 +410,8 @@ export default function BasketForm() {
               <TextField
                 id="component 3"
                 select
-                label={currency3}
-                value={currency3}
+                // label={currency3}
+                // value={currency3}
                 onChange={handleChange3}
                 SelectProps={{
                   native: true
@@ -442,8 +442,8 @@ export default function BasketForm() {
               <TextField
                 id="component 4"
                 select
-                label={currency4}
-                value={currency4}
+                // label={currency4}
+                // value={currency4}
                 onChange={handleChange4}
                 SelectProps={{
                   native: true
@@ -474,8 +474,8 @@ export default function BasketForm() {
               <TextField
                 id="component 5"
                 select
-                label={currency5}
-                value={currency5}
+                // label={currency5}
+                // value={currency5}
                 onChange={handleChange5}
                 SelectProps={{
                   native: true
