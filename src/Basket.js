@@ -58,7 +58,11 @@ export default class Basket extends Component {
   }
 
   setPrices = async data => {
-    const a = await data.data[this.coinOneId].usd;
+    await data;
+    const a =
+      data.data[this.coinOneId] !== undefined
+        ? data.data[this.coinOneId].usd
+        : "";
     const b =
       data.data[this.coinTwoId] !== undefined
         ? data.data[this.coinTwoId].usd

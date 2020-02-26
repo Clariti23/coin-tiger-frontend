@@ -16,7 +16,9 @@ export default function DummyLogin() {
         display="flex"
       >
         <Typography variant="body1" color="textPrimary" align="left">
-          {'To login, use username "gfero@gmail.com" and password: "gfero"'}
+          {
+            'To login, use username "gfero@gmail.com" and password: "gfero". The backend host sleeps when the application is not being used. Please be patient when logging in.'
+          }
         </Typography>
       </Box>
     </div>
