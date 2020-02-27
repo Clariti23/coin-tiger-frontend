@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import CoinGeckoBrand from "./CoinGeckoBrand";
 import Copyright from "./Copyright";
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 export default function BasketPage(props) {
   return props.loggedIn === true ? (
@@ -27,7 +28,11 @@ export default function BasketPage(props) {
     </div>
   ) : (
     <div>
-      <h2>You must be logged in to view your watchlist and baskets</h2>
+      <Box textAlign="center" fontStyle="oblique">
+        <Typography align="center" fontStyle="oblique">
+          You must be singed in to view your watchlist and track your baskets
+        </Typography>
+      </Box>
       <Box mt={8}>
         <CoinGeckoBrand />
         <Copyright />
