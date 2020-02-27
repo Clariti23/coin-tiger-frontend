@@ -3,6 +3,7 @@ import BasketForm from "./BasketForm";
 import CoinGeckoBrand from "./CoinGeckoBrand";
 import Copyright from "./Copyright";
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 export default function CreatePage(props) {
   console.log("props", props);
@@ -18,7 +19,11 @@ export default function CreatePage(props) {
       align-items="center"
       height="100vh"
     >
-      <h2> You must be signed in to create a basket</h2>
+      <Box textAlign="center" fontStyle="oblique">
+        <Typography align="center" fontStyle="oblique">
+          You must be signed in to create a basket
+        </Typography>
+      </Box>
       <Box mt={8}>
         <CoinGeckoBrand />
         <Copyright />

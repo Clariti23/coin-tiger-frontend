@@ -78,10 +78,10 @@ export default function BasketForm() {
   const [watchList, setWatchlist] = React.useState([]);
 
   //API STRINGS
-  // const LOCAL_TEST_API = "http://localhost:3000";
-  const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
-  const FavoritesAPI = PRODUCTION_API + "/favorites";
-  const BasketsAPI = PRODUCTION_API + "/baskets";
+  const LOCAL_TEST_API = "http://localhost:3000";
+  // const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  const FavoritesAPI = LOCAL_TEST_API + "/favorites";
+  const BasketsAPI = LOCAL_TEST_API + "/baskets";
 
   const UID = localStorage.getItem("UID");
   const basket = {
