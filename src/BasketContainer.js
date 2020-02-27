@@ -8,9 +8,9 @@ export default class BasketContainer extends Component {
     UID: null
   };
   //API STRINGS
-  LOCAL_TEST_API = "http://localhost:3000";
-  // PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
-  API = this.LOCAL_TEST_API + "/baskets";
+  // LOCAL_TEST_API = "http://localhost:3000";
+  PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  API = this.PRODUCTION_API + "/baskets";
 
   componentDidMount() {
     const UID = localStorage.getItem("UID");

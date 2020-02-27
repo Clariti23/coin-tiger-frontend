@@ -20,9 +20,9 @@ export default class WatchlistContainer extends Component {
     UID: null
   };
   //API STRINGS
-  LOCAL_TEST_API = "http://localhost:3000";
-  // PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
-  FavoritesAPI = this.LOCAL_TEST_API + "/favorites";
+  // LOCAL_TEST_API = "http://localhost:3000";
+  PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
+  FavoritesAPI = this.PRODUCTION_API + "/favorites";
 
   componentDidMount() {
     const name = localStorage.getItem("name");
