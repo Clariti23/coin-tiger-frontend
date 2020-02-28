@@ -24,11 +24,14 @@ CoinTiger has a PostgreSQL database built with Ruby on Rails. [See the backend r
 ## Getting started
 Fork and clone the repo to your local machine. In ```package.json``` you'll want to make sure the start script is set to ```react-scripts start``` instead of ```serve -s build```. Next, you will need to run through the app, comment out the ```production``` API strings, uncomment the local API strings for hitting the localhost:3000 server, and then paste those local strings into the API variables that follow. 
 Run ```npm start``` if the ```.lock``` file isn't in the repo. From here you are ready to rock and roll with ```npm start```. 
-Please
+
 
 ## Link to Web App 
 CoinTiger is alive and roaring at https://cointiger.herokuapp.com/. 
 
 ## Contributions  
-Wow, it would be dope if anyone else is interested in making a PR for CoinTiger. Some features that would be really cool that I haven't gotten to yet, but wouldn't mind getting around to at some point: D3/Chart.js to with basic ROI curves for each basket. Ideally you can click on the card, it flips over, then you see the chart of it's performance since the indexing date. 
+Wow, it would be dope if anyone else is interested in making a PR for CoinTiger! Some features that would be really cool that I haven't gotten to yet, but wouldn't mind getting around to at some point:
+- Chart.js to with basic ROI curves for each basket. Ideally you can click on the card, it flips over, then you see the chart of it's performance since the indexing date. 
+- Covariance calculations with two different baskets
+- Other performance metrics besides percentage change in basket value
 
