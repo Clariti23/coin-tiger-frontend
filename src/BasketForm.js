@@ -82,6 +82,8 @@ export default function BasketForm() {
   const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   const FavoritesAPI = PRODUCTION_API + "/favorites";
   const BasketsAPI = PRODUCTION_API + "/baskets";
+  // const FavoritesAPI = LOCAL_TEST_API + "/favorites";
+  // const BasketsAPI = LOCAL/_TEST_API + "/baskets";
 
   const UID = localStorage.getItem("UID");
   const basket = {

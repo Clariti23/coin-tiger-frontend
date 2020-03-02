@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "typeface-roboto";
 import App from "./App";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
+const font = "'Roboto', sans-serif";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -12,7 +13,8 @@ const theme = createMuiTheme({
     secondary: {
       main: "#ffcc80"
     }
-  }
+  },
+  fontFamily: font
 });
 
 ReactDOM.render(

@@ -61,6 +61,7 @@ export default function EnhancedTable(props) {
   // const LOCAL_TEST_API = "http://localhost:3000";
   const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   const FAVORITE_API = PRODUCTION_API + "/favorites";
+  // const FAVORITE_API = LOCAL_TEST_API + "/favorites";
 
   const handleAddToWatchList = event => {
     let coin_gecko_id = event.target.id;
