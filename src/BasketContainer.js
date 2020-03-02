@@ -11,6 +11,7 @@ export default class BasketContainer extends Component {
   // LOCAL_TEST_API = "http://localhost:3000";
   PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   API = this.PRODUCTION_API + "/baskets";
+  // API = this.LOCAL_TEST_API + "/baskets";
 
   componentDidMount() {
     const UID = localStorage.getItem("UID");

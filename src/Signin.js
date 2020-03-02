@@ -42,6 +42,7 @@ export default function SignIn(props) {
   // const LOCAL_TEST_API = "http://localhost:3000";
   const PRODUCTION_API = "https://gentle-wildwood-07928.herokuapp.com";
   const API = PRODUCTION_API + "/login";
+  // const API = LOCAL_TEST_API + "/login";
 
   let handleSubmit = event => {
     event.preventDefault();
