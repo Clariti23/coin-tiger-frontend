@@ -6,8 +6,6 @@ CoinTiger is a project I built as part of my passion to learn more about Bitcoin
 
 CoinTiger is an investment management tool for building baskets of cryptoassets and gaining the capability to view how these baskets perform over time. This tool is ideally suited for a thesis-driven investor who wants to be able to compare how different investment theses play out with objective metrics. 
 
-![basketsPage](/assets/CoinTiger-Baskets Page.png) 
-
 For example, the 2020Majors Basket is a simple mixture of 50% Bitcoin and 50% Ether with an indexing date set at January 01 2020. Suppose an initial basket value of $10,000. CoinTiger caluclates the quantity of Bitcoin $5,000 would have bought on January 1, then it calculates the quantity of Ether $5,000 would have bought. To find the real-time performance of a basket, CoinTiger takes the initial quantities and multiplies it by market prices of those coins, then adds together these values to get Current Basket Value.
 
 
